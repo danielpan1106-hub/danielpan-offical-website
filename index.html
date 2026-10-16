@@ -237,6 +237,56 @@
       background: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(20,33,28,.12); transition: transform .25s, background-color .25s, color .25s, box-shadow .25s; }
     .social-btn:hover, .social-btn:focus-visible { transform: translateY(-3px); color: #fff; background: var(--sc); box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--sc) 70%, transparent); }
     .social-btn--line { --sc: #06c755; } .social-btn--fb { --sc: #1877f2; } .social-btn--in { --sc: #0a66c2; } .social-btn--gh { --sc: #181717; }
+    /* === 聯絡我：資訊卡（深綠）＋ 表單 === */
+    .contact-card { position: relative; overflow: hidden; border-radius: 1.25rem; padding: 2rem 1.75rem; color: #fff;
+      background: radial-gradient(120% 80% at 100% 0%, #1B6B52 0%, var(--c-brand) 40%, #0A3D30 100%);
+      box-shadow: 0 24px 50px -24px color-mix(in srgb, var(--c-brand) 80%, transparent); }
+    .contact-card h3 { color: #fff; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .ci-icon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; flex-shrink: 0; border-radius: .8rem; color: var(--c-signalhover); background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); }
+    .ci-label { font-size: .78rem; letter-spacing: .12em; color: rgba(255,255,255,.65); }
+    .ci-value { display: block; font-size: 1.02rem; font-weight: 500; color: #fff; overflow-wrap: anywhere; text-decoration: none; }
+    a.ci-value:hover { color: var(--c-signalhover); }
+    .contact-card .social-btn { color: #fff; background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+    .contact-card .social-btn:hover, .contact-card .social-btn:focus-visible { background: var(--sc); box-shadow: 0 10px 22px -8px rgba(0,0,0,.4); }
+    .field label, .field legend { display: block; font-size: .95rem; font-weight: 700; color: var(--c-ink); }
+    .field input[type="text"], .field input[type="email"], .field textarea {
+      display: block; width: 100%; margin-top: .5rem; padding: .8rem 1rem; border-radius: .8rem; font: inherit; font-size: 1rem; color: var(--c-ink);
+      background: rgba(255,255,255,.85); border: 1px solid var(--c-alu); transition: border-color .2s, box-shadow .2s; }
+    .field textarea { resize: vertical; min-height: 8.5rem; }
+    .field input::placeholder, .field textarea::placeholder { color: #8A9AA5; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--c-brand); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-brand) 14%, transparent); }
+    .field.has-error input, .field.has-error textarea { border-color: #C2410C; }
+    .field-error { min-height: 1.2em; margin-top: .35rem; font-size: .82rem; color: #B42318; }
+    fieldset.field { border: 0; padding: 0; margin-inline: 0; min-width: 0; }
+    .req { color: var(--c-signaldeep); }
+    .chip-group { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .opt { position: relative; cursor: pointer; }
+    .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .opt span { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .95rem; border-radius: 999px; font-size: .9rem; font-weight: 500; color: var(--c-body);
+      background: rgba(255,255,255,.75); box-shadow: inset 0 0 0 1px var(--c-alu); transition: background-color .2s, color .2s, box-shadow .2s; }
+    .opt span::before { content: "\f067"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: .7rem; opacity: .55; }
+    .opt:hover span { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 45%, transparent); }
+    .opt input:checked + span { color: #fff; background: var(--c-brand); box-shadow: inset 0 0 0 1px var(--c-brand); }
+    .opt input:checked + span::before { content: "\f00c"; opacity: 1; }
+    .opt input:focus-visible + span { outline: 2px solid var(--c-brand); outline-offset: 2px; }
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; padding: .9rem 2rem; border-radius: 999px; font-weight: 700; color: var(--c-ink);
+      background: var(--c-signal); box-shadow: 0 8px 22px -10px color-mix(in srgb, var(--c-signal) 70%, transparent); transition: background-color .25s, transform .2s; white-space: nowrap; }
+    .btn-submit:hover { background: var(--c-signalhover); }
+    .btn-submit:active { transform: scale(.98); }
+    .btn-submit[disabled] { opacity: .65; cursor: progress; }
+    .form-status { margin-top: 1rem; padding: .85rem 1rem; border-radius: .8rem; font-size: .95rem; font-weight: 500; }
+    .form-status.ok { color: #0A3D30; background: #E2EFE9; box-shadow: inset 0 0 0 1px #B9D9CA; }
+    .form-status.err { color: #8A2A0A; background: #FDEBD6; box-shadow: inset 0 0 0 1px #F5C79A; }
+    #sentDialog { width: min(92vw, 420px); padding: 0; border: 0; border-radius: 1.25rem; background: #fff; box-shadow: 0 30px 80px -20px rgba(10,30,24,.55); }
+    #sentDialog[open] { animation: sentIn .35s cubic-bezier(.2,.9,.3,1.2); }
+    #sentDialog::backdrop { background: rgba(8,28,22,.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    @keyframes sentIn { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+    .sent-body { padding: 2.25rem 2rem 2rem; text-align: center; }
+    .sent-icon { display: inline-grid; place-items: center; width: 4rem; height: 4rem; border-radius: 50%; font-size: 1.5rem; color: #fff;
+      background: radial-gradient(circle at 30% 30%, var(--c-brand2), var(--c-brand)); box-shadow: 0 0 0 8px color-mix(in srgb, var(--c-brand) 12%, transparent); }
+    @media (prefers-reduced-motion: reduce) { #sentDialog[open] { animation: none; } }
     .form-box { border-radius: 1.25rem; padding: 1.5rem; text-align: left; background: rgba(255,255,255,.5); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 14%, transparent); }
     @media (prefers-reduced-motion: reduce) { .social-btn { transition: none; } .social-btn:hover { transform: none; } }
 
@@ -251,6 +301,38 @@
       background: linear-gradient(180deg, var(--c-brand), var(--c-brand2)); animation: blink 1s steps(1) infinite; transition: opacity .8s; }
     .cursor--off { opacity: 0; }
     @keyframes blink { 50% { opacity: 0; } }
+
+    /* === Hero 背景影片（16:9 以 cover 方式填滿，放大 1.2 倍藏住 YouTube 邊角資訊） === */
+    .hero-video { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+      background: radial-gradient(120% 90% at 75% 40%, #14523F 0%, #0A3D30 45%, #061F18 100%); }
+    .hero-video iframe { position: absolute; top: 50%; left: 50%; border: 0; width: 100vw; height: 56.25vw; min-height: 100%; min-width: 177.78svh;
+      transform: translate(-50%, -50%) scale(1.2); opacity: 0; animation: heroVideoIn 1.2s ease 3s forwards; }
+    @keyframes heroVideoIn { to { opacity: 1; } } /* 前 3 秒先顯示封面圖，避開 YouTube 載入畫面與播放鈕 */
+    .hero-shade { position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,28,22,.88) 0%, rgba(8,28,22,.7) 45%, rgba(8,28,22,.35) 100%),
+        linear-gradient(180deg, rgba(8,28,22,.55) 0%, transparent 22%, transparent 70%, rgba(8,28,22,.6) 100%); }
+    @media (max-width: 1023.98px) { .hero-shade { background: linear-gradient(180deg, rgba(8,28,22,.7), rgba(8,28,22,.82)); } }
+    @media (prefers-reduced-motion: reduce) { .hero-video iframe { display: none; } }
+
+    /* Hero 文字改為深底亮字，確保清晰 */
+    .hero--video .orbit { display: none !important; }
+    .hero--video .hero-title { color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.35); letter-spacing: .04em; }
+    .hero--video .grad-text { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; }
+    .hero--video .cursor { background: var(--c-signal); }
+    .hero--video .hero-eyebrow { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.28); }
+    .hero--video .hero-eyebrow .cta-dot { background: #5FD3A2; }
+    .hero--video .hero-meta { color: rgba(255,255,255,.9); }
+    .hero--video .hero-meta > span::before { color: rgba(255,255,255,.45); }
+    .hero--video .btn-ghost { color: #fff; background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.4); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .hero--video .btn-ghost:hover { color: var(--c-ink); background: #fff; }
+    .hero--video .scroll-hint { color: rgba(255,255,255,.8); }
+    .hero--video .mouse { border-color: rgba(255,255,255,.6); }
+    .hero--video .mouse i { background: #fff; }
+    /* 頁首在影片上方（尚未捲動）時改用白字 */
+    #siteHeader:not(.is-scrolled) .nav-link { color: rgba(255,255,255,.88); }
+    #siteHeader:not(.is-scrolled) .nav-link:hover, #siteHeader:not(.is-scrolled) .nav-link[aria-current="true"] { color: #fff; }
+    #siteHeader:not(.is-scrolled) .site-name, #siteHeader:not(.is-scrolled) #menuBtn { color: #fff; }
 
     .scroll-hint { display: inline-flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .25em; color: var(--c-body); }
     .mouse { width: 22px; height: 36px; border-radius: 14px; border: 1.5px solid color-mix(in srgb, var(--c-brand) 55%, transparent); display: flex; justify-content: center; padding-top: 6px; }
@@ -368,7 +450,7 @@
     <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
       <a href="#home" class="flex items-center gap-2.5 font-display text-lg font-bold text-ink" aria-label="潘佑明 — 回到首頁">
         <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-brand to-brand2 text-sm font-bold text-white" aria-hidden="true">P</span>
-        <span>潘佑明</span>
+        <span class="site-name">潘佑明</span>
       </a>
 
       <nav aria-label="主選單" class="hidden lg:block">
@@ -415,10 +497,16 @@
   <main id="main">
 
     <!-- ===================== 1. Hero ===================== -->
-    <section id="home" aria-labelledby="heroTitle" class="relative flex min-h-[100svh] items-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
-      <div class="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_.85fr]">
+    <section id="home" aria-labelledby="heroTitle" class="hero--video relative isolate flex min-h-[100svh] items-center overflow-hidden px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+      <!-- 滿版背景影片（YouTube，靜音、自動、循環播放；載入前與「減少動態」時顯示封面圖） -->
+      <div class="hero-video" aria-hidden="true">
+        <iframe src="https://www.youtube-nocookie.com/embed/sK5d4Li8nqc?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=sK5d4Li8nqc&amp;controls=0&amp;playsinline=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;modestbranding=1"
+                title="EGAT 航太產品追溯（背景影片）" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="hero-shade"></div>
+      </div>
+      <div class="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_.85fr]">
         <div>
-          <p class="reveal mb-6 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-sm font-medium text-body shadow-[inset_0_0_0_1px_rgba(14,92,69,.2)] backdrop-blur">
+          <p class="hero-eyebrow reveal mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium backdrop-blur">
             <span class="cta-dot" aria-hidden="true"></span>Aerospace × AI Smart Manufacturing
           </p>
 
@@ -476,7 +564,7 @@
       </div>
 
       <!-- 往下捲動提示 -->
-      <a href="#stats" class="scroll-hint absolute bottom-6 left-1/2 -translate-x-1/2" aria-label="往下捲動至數據亮點">
+      <a href="#stats" class="scroll-hint absolute bottom-6 left-1/2 z-10 -translate-x-1/2" aria-label="往下捲動至數據亮點">
         <span class="mouse" aria-hidden="true"><i></i></span><span aria-hidden="true">SCROLL</span>
       </a>
     </section>
@@ -848,6 +936,16 @@
       </div>
     </section>
 
+    <!-- 表單送出成功提示 -->
+    <dialog id="sentDialog" aria-labelledby="sentTitle" aria-describedby="sentDesc">
+      <div class="sent-body">
+        <span class="sent-icon" aria-hidden="true"><i class="fa-solid fa-paper-plane"></i></span>
+        <h3 id="sentTitle" class="mt-5 text-xl font-bold">需求已送出</h3>
+        <p id="sentDesc" class="mt-2 text-body">需求已送出，我們將盡快與您聯絡！</p>
+        <button type="button" class="btn-submit sent-ok mt-7">好的</button>
+      </div>
+    </dialog>
+
     <!-- 證書放大檢視 -->
     <dialog id="certViewer" aria-label="證書檢視">
       <figure class="relative m-0">
@@ -885,40 +983,115 @@
     </section>
 
     <!-- ===================== 7. 聯絡我 ===================== -->
+    <!-- 表單在背景送到 Google 表單「自動化聯絡表單」（欄位 ID 取自 FB_PUBLIC_LOAD_DATA_），回覆可在 Google 表單／試算表查看 -->
     <section id="contact" aria-labelledby="contactTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-      <div class="glass reveal mx-auto max-w-4xl px-6 py-14 text-center sm:px-12 sm:py-16">
-        <p class="eyebrow justify-center">Contact</p>
-        <h2 id="contactTitle" class="h2 mx-auto mt-3 max-w-2xl" style="text-wrap:balance">讓我們一起把製造經驗變成競爭力</h2>
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">Contact</p>
+        <h2 id="contactTitle" class="reveal h2 mt-3" style="--d:80ms">讓我們一起把製造經驗變成競爭力</h2>
+        <p class="reveal section-lead mt-5 text-base leading-[1.9] text-body sm:text-lg" style="--d:160ms">
+          不論是製程優化、成本改善，還是 AI 導入規劃，都歡迎留下您的需求，我會盡快與您聯繫。
+        </p>
 
-        <!-- 社群連結 -->
-        <ul class="mt-9 flex flex-wrap items-center justify-center gap-4" aria-label="社群連結">
-          <li><a class="social-btn social-btn--line" href="https://line.me/ti/p/CWwpmqpmHB" target="_blank" rel="noopener noreferrer" aria-label="LINE（於新分頁開啟）" title="LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a></li>
-          <li><a class="social-btn social-btn--fb" href="https://www.facebook.com/daniel.pan.5815" target="_blank" rel="noopener noreferrer" aria-label="Facebook（於新分頁開啟）" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-          <li><a class="social-btn social-btn--in" href="https://www.linkedin.com/in/%E4%BD%91%E6%98%8E-%E6%BD%98-894149197/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn（於新分頁開啟）" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-          <li><a class="social-btn social-btn--gh" href="https://github.com/danielpan1106-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub（於新分頁開啟）" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
-        </ul>
+        <div class="mt-12 grid items-start gap-6 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.3fr)]">
+          <!-- 與我們取得聯繫 -->
+          <aside class="contact-card reveal" aria-labelledby="reachTitle">
+            <h3 id="reachTitle" class="text-xl font-bold">與我們取得聯繫</h3>
+            <ul class="mt-6 space-y-5">
+              <li class="contact-item"><span class="ci-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                <div class="min-w-0"><p class="ci-label">聯絡信箱</p><a class="ci-value" href="mailto:youmingpan@egat.com.tw">youmingpan@egat.com.tw</a></div></li>
+              <li class="contact-item"><span class="ci-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div class="min-w-0"><p class="ci-label">電話</p><a class="ci-value" href="tel:+88632826151">(03) 282-6151</a></div></li>
+              <li class="contact-item"><span class="ci-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                <div class="min-w-0"><p class="ci-label">手機</p><a class="ci-value" href="tel:+886917822691">0917-822-691</a></div></li>
+              <li class="contact-item"><span class="ci-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div class="min-w-0"><p class="ci-label">地址</p><a class="ci-value" href="https://www.google.com/maps/search/?api=1&amp;query=328%E6%A1%83%E5%9C%92%E5%B8%82%E8%A7%80%E9%9F%B3%E5%8D%80%E6%88%90%E5%8A%9F%E8%B7%AF%E4%B8%80%E8%B7%AF528%E8%99%9F" target="_blank" rel="noopener noreferrer">328 桃園市觀音區成功路一路 528 號</a></div></li>
+              <li class="contact-item"><span class="ci-icon" aria-hidden="true"><i class="fa-solid fa-building"></i></span>
+                <div class="min-w-0"><p class="ci-label">統一編號</p><p class="ci-value">24813490</p></div></li>
+            </ul>
 
-        <!-- 需求表單 -->
-        <div class="form-box mx-auto mt-8 flex max-w-2xl flex-col items-start gap-5 sm:flex-row sm:items-center">
-          <span class="icon-chip shrink-0" aria-hidden="true"><i class="fa-solid fa-file-pen"></i></span>
-          <div class="flex-1">
-            <h3 class="text-lg font-bold">填寫需求表單</h3>
-            <p class="mt-1 text-[.95rem] leading-relaxed text-body">先簡單描述您的製程或 AI 導入需求，我會在了解後與您聯繫。</p>
-          </div>
-          <a class="btn-ghost shrink-0" href="https://docs.google.com/forms/d/e/1FAIpQLSczNtK0bitKQR-POpysxXmlLXf6zlO8_-xHaBr0PSnIPH4iNg/viewform" target="_blank" rel="noopener noreferrer" aria-label="填寫需求表單（於新分頁開啟 Google 表單）">填寫表單 <i class="fa-solid fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i></a>
+            <div class="mt-8 border-t border-white/15 pt-6">
+              <p class="ci-label">社群</p>
+              <ul class="mt-3 flex flex-wrap gap-3" aria-label="社群連結">
+                <li><a class="social-btn social-btn--line" href="https://line.me/ti/p/CWwpmqpmHB" target="_blank" rel="noopener noreferrer" aria-label="LINE（於新分頁開啟）" title="LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a></li>
+                <li><a class="social-btn social-btn--fb" href="https://www.facebook.com/daniel.pan.5815" target="_blank" rel="noopener noreferrer" aria-label="Facebook（於新分頁開啟）" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                <li><a class="social-btn social-btn--in" href="https://www.linkedin.com/in/%E4%BD%91%E6%98%8E-%E6%BD%98-894149197/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn（於新分頁開啟）" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+                <li><a class="social-btn social-btn--gh" href="https://github.com/danielpan1106-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub（於新分頁開啟）" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+
+            <div class="mt-8">
+              <a class="cta cta-lg w-full" href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" aria-label="預約 30 分鐘諮詢（於新分頁開啟 Google 行事曆）">
+                <span class="cta-labels">
+                  <span class="cta-l1">預約 30 分鐘諮詢</span>
+                  <span class="cta-l2" aria-hidden="true"><i class="cta-dot"></i>Status: Ready to Connect</span>
+                </span>
+              </a>
+            </div>
+          </aside>
+
+          <!-- 聯絡我們（表單） -->
+          <form id="contactForm" class="glass reveal p-6 sm:p-8" action="https://docs.google.com/forms/d/e/1FAIpQLScWWiUsMw30jq5-rUS1heUCIP75LLp1ofIYEvu94_OVdc6-HA/formResponse" method="POST" novalidate aria-labelledby="formTitle">
+            <h3 id="formTitle" class="text-xl font-bold">聯絡我們</h3>
+            <p class="mt-1 text-sm text-body"><span class="req" aria-hidden="true">*</span> 為必填欄位</p>
+
+            <!-- 防機器人陷阱欄位：真人看不到，若被填寫就不送出 -->
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="mt-6 grid gap-5 sm:grid-cols-2">
+              <div class="field">
+                <label for="cf-name">您的姓名／稱呼 <span class="req" aria-hidden="true">*</span></label>
+                <input id="cf-name" name="entry.588998168" type="text" autocomplete="name" required aria-describedby="cf-name-err" placeholder="例如：王經理">
+                <p class="field-error" id="cf-name-err"></p>
+              </div>
+              <div class="field">
+                <label for="cf-email">聯絡電子信箱 <span class="req" aria-hidden="true">*</span></label>
+                <input id="cf-email" name="entry.476214014" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-err" placeholder="name@company.com">
+                <p class="field-error" id="cf-email-err"></p>
+              </div>
+            </div>
+
+            <fieldset class="field mt-6" id="cf-needs" aria-describedby="cf-needs-err">
+              <legend>您的需求（可複選） <span class="req" aria-hidden="true">*</span></legend>
+              <div class="chip-group mt-3">
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="五軸加工製程開發／優化"><span>五軸加工製程開發／優化</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="加工工時與成本改善"><span>加工工時與成本改善</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="刀具壽命管理與預測"><span>刀具壽命管理與預測</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="CNC 預測性維護"><span>CNC 預測性維護</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="自動化報價模型"><span>自動化報價模型</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="製程經驗數位化／知識管理"><span>製程經驗數位化／知識管理</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="製造業 AI 導入規劃"><span>製造業 AI 導入規劃</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="協力廠商技術轉移／輔導"><span>協力廠商技術轉移／輔導</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="企業內訓／演講邀約"><span>企業內訓／演講邀約</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1610329698" value="其他"><span>其他</span></label>
+              </div>
+              <p class="field-error" id="cf-needs-err"></p>
+            </fieldset>
+
+            <div class="field mt-6">
+              <label for="cf-msg">需求簡介 <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="cf-msg" name="entry.1646642689" rows="5" required aria-describedby="cf-msg-err" placeholder="請簡述目前遇到的狀況、零件或製程類型、希望達成的目標與時程等。"></textarea>
+              <p class="field-error" id="cf-msg-err"></p>
+            </div>
+
+            <fieldset class="field mt-6">
+              <legend>適合聯絡的時間（可複選）</legend>
+              <div class="chip-group mt-3">
+                <label class="opt"><input type="checkbox" data-entry="entry.1091995575" value="平日上午 09:00–12:00"><span>平日上午 09:00–12:00</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1091995575" value="平日下午 13:00–17:30"><span>平日下午 13:00–17:30</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1091995575" value="平日晚上 18:00–21:00"><span>平日晚上 18:00–21:00</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1091995575" value="週末"><span>週末</span></label>
+                <label class="opt"><input type="checkbox" data-entry="entry.1091995575" value="皆可"><span>皆可</span></label>
+              </div>
+            </fieldset>
+
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-xs leading-relaxed text-body">您填寫的資料僅用於回覆本次諮詢。</p>
+              <button type="submit" class="btn-submit"><span class="btn-label">送出需求</span><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
+            <p id="cf-status" class="form-status" role="status" aria-live="polite" hidden></p>
+            <p class="mt-4 text-xs text-body">也可以改用 <a class="underline underline-offset-4 hover:text-brand" href="https://docs.google.com/forms/d/e/1FAIpQLSczNtK0bitKQR-POpysxXmlLXf6zlO8_-xHaBr0PSnIPH4iNg/viewform" target="_blank" rel="noopener noreferrer">Google 表單</a> 填寫。</p>
+          </form>
         </div>
-
-        <div class="mt-9">
-          <a class="cta cta-lg" href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" aria-label="預約 30 分鐘諮詢（於新分頁開啟 Google 行事曆）">
-            <span class="cta-labels">
-              <span class="cta-l1">預約 30 分鐘諮詢</span>
-              <span class="cta-l2" aria-hidden="true"><i class="cta-dot"></i>Status: Ready to Connect</span>
-            </span>
-          </a>
-        </div>
-
-        <!-- TODO: 請替換 — Email 尚未提供，目前為佔位文字。
-             取得後請改成：<a class="placeholder-pill" href="mailto:你的信箱">你的信箱</a> -->
       </div>
     </section>
   </main>
@@ -974,6 +1147,69 @@
         entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
       }, { rootMargin: '-40% 0px -55% 0px' });
       ids.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+    }
+
+    /* === 聯絡表單：前端驗證 + 背景送出到 Google 表單 === */
+    const sentDlg = document.getElementById('sentDialog');
+    const showSent = () => {
+      if (sentDlg && sentDlg.showModal) { sentDlg.showModal(); $('.sent-ok', sentDlg).focus(); }
+      else alert('需求已送出，我們將盡快與您聯絡！');
+    };
+    if (sentDlg) {
+      $('.sent-ok', sentDlg).addEventListener('click', () => sentDlg.close());
+      sentDlg.addEventListener('click', e => { if (e.target === sentDlg) sentDlg.close(); });
+    }
+    const form = document.getElementById('contactForm');
+    if (form) {
+      const status = $('#cf-status');
+      const setErr = (field, msg) => {
+        const box = field.closest('.field'); const err = $('.field-error', box);
+        box.classList.toggle('has-error', !!msg); err.textContent = msg || '';
+        if (field.setAttribute) field.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      };
+      const validate = () => {
+        let first = null;
+        const name = $('#cf-name'), email = $('#cf-email'), msg = $('#cf-msg'), needs = $('#cf-needs');
+        const checks = [
+          [name, name.value.trim() ? '' : '請填寫您的姓名或稱呼'],
+          [email, !email.value.trim() ? '請填寫聯絡電子信箱' : (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? '' : '電子信箱格式不正確，請再確認')],
+          [needs, $$('input[data-entry="entry.1610329698"]:checked', form).length ? '' : '請至少選擇一項需求'],
+          [msg, msg.value.trim().length >= 10 ? '' : '請簡單描述您的需求（至少 10 個字）']
+        ];
+        checks.forEach(([el, m]) => { setErr(el, m); if (m && !first) first = el; });
+        return first;
+      };
+      $$('input, textarea', form).forEach(el => el.addEventListener(el.type === 'checkbox' ? 'change' : 'blur', () => {
+        if (form.dataset.tried) validate();
+      }));
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        form.dataset.tried = '1';
+        const first = validate();
+        if (first) { (first.matches('fieldset') ? $('input', first) : first).focus(); return; }
+        const btn = $('.btn-submit', form), label = $('.btn-label', btn);
+        btn.disabled = true; label.textContent = '傳送中…'; status.hidden = true;
+        // 組成 Google 表單需要的欄位（複選題合併成一行文字）
+        const body = new URLSearchParams();
+        body.append('entry.588998168', $('#cf-name').value.trim());
+        body.append('entry.476214014', $('#cf-email').value.trim());
+        body.append('entry.1610329698', $$('input[data-entry="entry.1610329698"]:checked', form).map(i => i.value).join('、'));
+        body.append('entry.1646642689', $('#cf-msg').value.trim());
+        body.append('entry.1091995575', $$('input[data-entry="entry.1091995575"]:checked', form).map(i => i.value).join('、') || '未指定');
+        try {
+          if (form.elements.website.value) { form.reset(); return; } // 機器人：不送出
+          // no-cors：在背景送出，不跳轉到 Google 的回覆頁（回應內容無法讀取，網路失敗時才會進 catch）
+          await fetch(form.action, { method: 'POST', mode: 'no-cors', body });
+          form.reset(); delete form.dataset.tried;
+          showSent();
+        } catch (err) {
+          status.className = 'form-status err';
+          status.textContent = '送出失敗，請確認網路連線後再試一次，或直接來信 youmingpan@egat.com.tw。';
+          status.hidden = false;
+        } finally {
+          btn.disabled = false; label.textContent = '送出需求';
+        }
+      });
     }
 
     /* === 證書放大檢視 === */
