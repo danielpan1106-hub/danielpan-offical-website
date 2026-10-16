@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>潘佑明｜航太製造專家 × AI 智慧製造顧問</title>
+  <meta name="description" content="14 年精密加工經驗、11 年航太製程開發。協助航太、半導體設備與精密加工產業，把製造經驗轉成可量化、可複製的 AI 數位能力。">
+  <meta name="theme-color" content="#F5F7F5">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="潘佑明｜航太製造專家 × AI 智慧製造顧問">
+  <meta property="og:description" content="14 年精密加工經驗、11 年航太製程開發。協助航太、半導體設備與精密加工產業，把製造經驗轉成可量化、可複製的 AI 數位能力。">
+  <!-- TODO: 請替換 — 網站上線後補上 og:url（正式網址）與 og:image（分享預覽圖，建議 1200×630） -->
+  <!-- <meta property="og:url" content="https://你的網域/"> -->
+  <!-- <meta property="og:image" content="https://你的網域/og-cover.jpg"> -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 有 JS 且支援 IntersectionObserver 時才啟用「進場前隱藏」，否則內容一律直接可見 -->
+  <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    /* =========================================================
+       THEME — 全站色彩與字體集中在這裡修改
+       下方 THEME_COLORS 會同時：
+         1) 餵給 Tailwind（text-brand、bg-signal/10 …）
+         2) 寫成 CSS 變數 --c-*（自訂 CSS 與 Canvas 粒子讀取）
+       （<style> 內 :root 的同名預設值只是 JS 失效時的備援）
+       ========================================================= */
+    const THEME_COLORS = {
+      brand:       '#0E5C45', // 主色 航太深綠（標題、Logo、導覽）
+      brand2:      '#2E8467', // 跑道綠（與主色組成漸層、圖表）
+      signal:      '#E07B12', // 強調色 航空橘（CTA、重點提示，約占 10%）
+      signalhover: '#F39A2E', // 亮橘（CTA hover）
+      signaldeep:  '#A85A0A', // 橘色文字專用深階（白底對比 ≥ 4.5，符合 WCAG AA）
+      ink:         '#14211C', // 墨黑（標題）
+      body:        '#3F4F59', // 鈦金屬灰（內文）
+      alu:         '#DCE3E0', // 鋁灰（邊框、分隔線）
+      mist:        '#F5F7F5'  // 雲白（頁面底色）
+    };
+    Object.entries(THEME_COLORS).forEach(([k, v]) =>
+      document.documentElement.style.setProperty('--c-' + k, v));
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: THEME_COLORS,
+            fontFamily: {
+              sans:    ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+              display: ['Space Grotesk', 'Noto Sans TC', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <style>
+    /* === Tokens（JS 會依 THEME_COLORS 覆寫；此處為備援） === */
+    :root {
+      --c-brand: #0E5C45; --c-brand2: #2E8467; --c-signal: #E07B12; --c-signalhover: #F39A2E; --c-signaldeep: #A85A0A;
+      --c-ink: #14211C; --c-body: #3F4F59; --c-alu: #DCE3E0; --c-mist: #F5F7F5;
+    }
+
+    /* === Base === */
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body {
+      margin: 0; color: var(--c-body); font-family: 'Inter','Noto Sans TC',system-ui,sans-serif;
+      background:
+        radial-gradient(1200px 700px at 12% -10%, color-mix(in srgb, var(--c-brand) 10%, transparent), transparent 60%),
+        radial-gradient(900px 600px at 95% 8%, color-mix(in srgb, var(--c-brand2) 8%, transparent), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--c-mist) 45%, #E9F0EC 100%);
+      background-attachment: fixed;
+      overflow-x: clip; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-display { font-family: 'Space Grotesk','Noto Sans TC',system-ui,sans-serif; color: var(--c-ink); }
+    main, footer { position: relative; z-index: 1; }
+    :focus-visible { outline: 2px solid var(--c-brand); outline-offset: 3px; border-radius: 6px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: #fff; color: var(--c-brand); padding: .5rem 1rem; border-radius: .5rem; transition: top .2s; }
+    .skip-link:focus { top: 1rem; }
+
+    /* === Background: canvas + glow blobs === */
+    #bgCanvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .bg-glow { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .glow { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; will-change: transform; }
+    .glow-1 { width: 46vmax; height: 46vmax; left: -14vmax; top: -12vmax; background: color-mix(in srgb, var(--c-brand) 22%, transparent); animation: drift1 26s ease-in-out infinite alternate; }
+    .glow-2 { width: 38vmax; height: 38vmax; right: -12vmax; top: 18vh; background: color-mix(in srgb, var(--c-brand2) 16%, transparent); animation: drift2 32s ease-in-out infinite alternate; }
+    .glow-3 { width: 34vmax; height: 34vmax; left: 25vw; bottom: -18vmax; background: color-mix(in srgb, var(--c-brand2) 14%, transparent); animation: drift3 36s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform: translate(8vmax, 6vmax) scale(1.08); } }
+    @keyframes drift2 { to { transform: translate(-7vmax, 8vmax) scale(1.12); } }
+    @keyframes drift3 { to { transform: translate(6vmax, -6vmax) scale(1.06); } }
+
+    /* === Header / Nav === */
+    #siteHeader { transition: background-color .3s, box-shadow .3s, backdrop-filter .3s; }
+    #siteHeader.is-scrolled {
+      background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+      box-shadow: 0 1px 0 rgba(20,33,28,.06), 0 8px 24px -16px rgba(20,33,28,.18);
+    }
+    .nav-link { position: relative; padding: .5rem .15rem; font-size: .95rem; font-weight: 500; color: var(--c-body); transition: color .2s; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .1rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--c-brand), var(--c-brand2)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .nav-link:hover, .nav-link[aria-current="true"] { color: var(--c-brand); }
+    .nav-link:hover::after, .nav-link[aria-current="true"]::after { transform: scaleX(1); }
+    #mobileMenu { animation: menuIn .25s ease; }
+    @keyframes menuIn { from { opacity: 0; transform: translateY(-8px); } }
+    .menu-link { display: block; padding: .85rem 1rem; border-radius: .75rem; font-weight: 500; color: var(--c-ink); }
+    .menu-link:hover, .menu-link[aria-current="true"] { background: color-mix(in srgb, var(--c-brand) 8%, transparent); color: var(--c-brand); }
+
+    /* === Glass card === */
+    .glass {
+      position: relative; border-radius: 1.25rem; border: 1px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.66);
+      -webkit-backdrop-filter: blur(14px) saturate(1.25); backdrop-filter: blur(14px) saturate(1.25);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 10px 30px -14px color-mix(in srgb, var(--c-brand) 28%, transparent);
+      transition: box-shadow .35s ease, translate .35s ease, opacity .7s ease var(--d, 0ms), transform .7s ease var(--d, 0ms);
+    }
+    .glass::before { /* 綠色漸層邊框（hover 亮起） */
+      content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; pointer-events: none;
+      background: linear-gradient(135deg, var(--c-brand), var(--c-brand2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+      opacity: 0; transition: opacity .35s ease;
+    }
+    @media (hover: hover) {
+      .card-hover:hover { translate: 0 -5px; box-shadow: inset 0 1px 0 #fff, 0 0 0 4px color-mix(in srgb, var(--c-brand) 7%, transparent), 0 22px 50px -16px color-mix(in srgb, var(--c-brand2) 40%, transparent); }
+      .card-hover:hover::before { opacity: 1; }
+    }
+    .card-hover:focus-within::before { opacity: 1; }
+
+    .icon-chip { display: inline-grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: .9rem; font-size: 1.5rem; line-height: 1;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--c-brand) 12%, #fff), color-mix(in srgb, var(--c-brand2) 12%, #fff));
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 14%, transparent); }
+    .icon-chip .fa-solid, .icon-chip .fa-brands { font-size: 1.2rem; color: var(--c-brand); }
+    /* Hero 資歷列：手機每段一行；md 以上橫排，換行時行首的分隔線被 overflow 裁掉 */
+    .hero-meta > span { display: block; }
+    @media (min-width: 768px) {
+      .hero-meta { display: flex; flex-wrap: wrap; margin-left: -2rem; }
+      .hero-meta > span::before { content: "｜"; display: inline-block; width: 2rem; text-align: center; color: color-mix(in srgb, var(--c-brand) 50%, transparent); }
+    }
+
+    /* === CTA button（航空橘實心＋墨黑字：全站唯一的主要行動色） === */
+    .cta {
+      position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center;
+      padding: .85rem 1.7rem; border-radius: 999px; font-weight: 700; color: var(--c-ink); text-decoration: none; white-space: nowrap;
+      background: var(--c-signal);
+      box-shadow: 0 8px 22px -10px color-mix(in srgb, var(--c-signal) 70%, transparent);
+      transition: box-shadow .35s, background-color .35s, color .35s, transform .2s;
+    }
+    .cta::before, .cta::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; z-index: -1; pointer-events: none;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+      transition: opacity .35s;
+    }
+    .cta::before { background: linear-gradient(135deg, var(--c-signalhover), var(--c-signaldeep)); opacity: 0; }
+    .cta::after  { background: var(--c-signaldeep); opacity: 0; }
+    .cta-labels { display: inline-grid; }
+    .cta-l1, .cta-l2 { grid-area: 1 / 1; display: inline-flex; align-items: center; justify-content: center; gap: .55rem; transition: opacity .25s, transform .25s; }
+    .cta-l2 { opacity: 0; transform: translateY(45%); color: var(--c-ink); }
+    .cta-dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--c-brand); animation: dotPulse 1.3s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-signal) 55%, transparent); opacity: 1; } 50% { box-shadow: 0 0 0 6px transparent; opacity: .45; } }
+    .cta:active { transform: scale(.98); }
+    .cta-lg { padding: 1rem 2.1rem; font-size: 1.05rem; }
+    .cta-sm { padding: .5rem 1.1rem; font-size: .92rem; }
+    /* hover 僅限有 hover 能力的裝置；觸控裝置點擊直接跳轉，不需先觸發 hover */
+    @media (hover: hover) {
+      .cta:hover { background: var(--c-signalhover); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-signal) 18%, transparent), 0 10px 34px -6px color-mix(in srgb, var(--c-signal) 60%, transparent); }
+      .cta:hover::before { opacity: 0; } .cta:hover::after { opacity: 1; }
+      .cta:hover .cta-l1 { opacity: 0; transform: translateY(-45%); }
+      .cta:hover .cta-l2 { opacity: 1; transform: none; }
+    }
+    .cta:focus-visible { outline-offset: 4px; outline-color: var(--c-brand); background: var(--c-signalhover); }
+    .cta:focus-visible::before { opacity: 0; } .cta:focus-visible::after { opacity: 1; }
+    .cta:focus-visible .cta-l1 { opacity: 0; transform: translateY(-45%); }
+    .cta:focus-visible .cta-l2 { opacity: 1; transform: none; }
+    /* 觸控裝置沒有 hover：不保留 Status 文字的寬度，按鈕維持緊湊 */
+    @media (hover: none) { .cta-l2 { display: none; } }
+    /* 導覽列按鈕在 lg 以下沒有空間放 Status 文字：保持原標籤 */
+    @media (max-width: 1023.98px) {
+      .cta--nav .cta-l2 { display: none; }
+      .cta--nav:hover .cta-l1, .cta--nav:focus-visible .cta-l1 { opacity: 1; transform: none; }
+    }
+    .btn-ghost { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.5rem; border-radius: 999px; font-weight: 500; color: var(--c-ink);
+      background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(20,33,28,.14); transition: background-color .25s, box-shadow .25s, color .25s; }
+    .btn-ghost:hover { background: #fff; color: var(--c-brand); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 45%, transparent); }
+    /* 聯絡我：社群圖示（hover 時換成各品牌色） */
+    .social-btn { --sc: var(--c-brand); display: inline-grid; place-items: center; width: 3.25rem; height: 3.25rem; border-radius: 50%; font-size: 1.35rem; color: var(--c-body);
+      background: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(20,33,28,.12); transition: transform .25s, background-color .25s, color .25s, box-shadow .25s; }
+    .social-btn:hover, .social-btn:focus-visible { transform: translateY(-3px); color: #fff; background: var(--sc); box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--sc) 70%, transparent); }
+    .social-btn--line { --sc: #06c755; } .social-btn--fb { --sc: #1877f2; } .social-btn--in { --sc: #0a66c2; } .social-btn--gh { --sc: #181717; }
+    .form-box { border-radius: 1.25rem; padding: 1.5rem; text-align: left; background: rgba(255,255,255,.5); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 14%, transparent); }
+    @media (prefers-reduced-motion: reduce) { .social-btn { transition: none; } .social-btn:hover { transform: none; } }
+
+    /* === Hero === */
+    .hero-title { display: grid; font-weight: 700; line-height: 1.22; letter-spacing: -.01em; font-size: clamp(1.65rem, .9rem + 4.6vw, 3.5rem); }
+    .hero-title > span { grid-area: 1 / 1; }
+    .ht-typed { display: none; }
+    .typing .ht-typed { display: block; }
+    .typing .ht-full { visibility: hidden; }
+    .grad-text { background: linear-gradient(120deg, var(--c-brand), var(--c-brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .cursor { display: inline-block; width: 3px; height: .95em; margin-left: 4px; vertical-align: -.1em; border-radius: 2px;
+      background: linear-gradient(180deg, var(--c-brand), var(--c-brand2)); animation: blink 1s steps(1) infinite; transition: opacity .8s; }
+    .cursor--off { opacity: 0; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .scroll-hint { display: inline-flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .25em; color: var(--c-body); }
+    .mouse { width: 22px; height: 36px; border-radius: 14px; border: 1.5px solid color-mix(in srgb, var(--c-brand) 55%, transparent); display: flex; justify-content: center; padding-top: 6px; }
+    .mouse i { width: 3px; height: 7px; border-radius: 3px; background: var(--c-brand); animation: wheel 1.6s ease-in-out infinite; }
+    @keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(11px); opacity: 0; } 100% { opacity: 0; } }
+
+    /* Hero orbit visual */
+    .orbit { position: relative; width: min(100%, 420px); aspect-ratio: 1; margin-inline: auto; }
+    .orbit svg { width: 100%; height: 100%; overflow: visible; }
+    .ring { fill: none; stroke: color-mix(in srgb, var(--c-brand) 28%, transparent); stroke-width: 1; }
+    .ring-dash { stroke-dasharray: 3 7; }
+    .spin-a { transform-origin: 200px 200px; animation: spin 48s linear infinite; }
+    .spin-b { transform-origin: 200px 200px; animation: spin 32s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .flow { stroke-dasharray: 6 10; animation: flow 3s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -64; } }
+    .chip { position: absolute; padding: .4rem .85rem; font-size: .8rem; font-weight: 500; color: var(--c-ink); border-radius: 999px; white-space: nowrap;
+      background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 22%, transparent), 0 10px 24px -12px color-mix(in srgb, var(--c-brand) 40%, transparent); animation: bob 6s ease-in-out infinite; }
+    .chip::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--c-signal); margin-right: .5rem; vertical-align: .1em; }
+    @keyframes bob { 50% { transform: translateY(-7px); } }
+
+    /* === Stats === */
+    .stat-num { font-family: 'Space Grotesk','Noto Sans TC',sans-serif; font-weight: 700; line-height: 1.15; white-space: nowrap;
+      font-size: clamp(1.4rem, 1.05rem + 1.3vw, 2rem);
+      background: linear-gradient(120deg, var(--c-brand), var(--c-brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat-num .unit { font-size: .62em; font-weight: 600; margin-inline: .12em; }
+
+    /* === Section headings === */
+    .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: 'Space Grotesk',sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--c-brand); }
+    .eyebrow::before { content: ""; width: 1.6rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--c-brand), var(--c-brand2)); }
+    .h2 { font-weight: 700; line-height: 1.25; font-size: clamp(1.65rem, 1.2rem + 2vw, 2.6rem); }
+
+    /* === About photo === */
+    .photo-frame { position: relative; border-radius: 1.75rem; padding: 6px; background: linear-gradient(135deg, rgba(255,255,255,.95), color-mix(in srgb, var(--c-brand) 14%, #fff));
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--c-brand) 28%, transparent), 0 0 0 8px color-mix(in srgb, var(--c-brand) 8%, transparent), 0 0 70px -6px color-mix(in srgb, var(--c-brand) 40%, transparent); }
+    .photo-frame img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 1.4rem; }
+    .photo-badge { position: absolute; left: 50%; bottom: -1rem; translate: -50% 0; display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap;
+      padding: .45rem .95rem; border-radius: 999px; font-size: .78rem; font-weight: 600; letter-spacing: .02em; color: #fff; background: var(--c-brand);
+      box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--c-brand) 80%, transparent); }
+    .photo-badge i { color: var(--c-signalhover); }
+
+    /* === 榮譽與認證 === */
+    .sub-h { display: flex; align-items: center; gap: .75rem; font-size: 1.15rem; font-weight: 700; color: var(--c-ink); }
+    .sub-h::after { content: ""; flex: 1; height: 1px; background: var(--c-alu); }
+    .sub-h i { color: var(--c-brand); }
+    .cert-thumb { all: unset; box-sizing: border-box; position: relative; display: block; width: 100%; cursor: zoom-in; overflow: hidden; border-radius: .9rem; background: #fff;
+      box-shadow: inset 0 0 0 1px var(--c-alu); }
+    .cert-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .cert-thumb::after { content: "\f00e"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: .6rem; bottom: .6rem; display: grid; place-items: center;
+      width: 2rem; height: 2rem; border-radius: 50%; font-size: .85rem; color: #fff; background: color-mix(in srgb, var(--c-ink) 70%, transparent); opacity: 0; transition: opacity .25s; }
+    .cert-thumb:hover img { transform: scale(1.04); }
+    .cert-thumb:hover::after, .cert-thumb:focus-visible::after { opacity: 1; }
+    .cert-thumb:focus-visible { outline: 2px solid var(--c-brand); outline-offset: 3px; }
+    .award-year { font-family: 'Space Grotesk','Noto Sans TC',sans-serif; font-weight: 700; font-size: .85rem; letter-spacing: .08em; color: var(--c-signaldeep); }
+    .issuer-chip { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; flex-shrink: 0; border-radius: .75rem; font-size: 1.1rem; color: var(--c-brand);
+      background: color-mix(in srgb, var(--c-brand) 9%, #fff); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 16%, transparent); }
+    .cert-row { display: flex; gap: .9rem; align-items: flex-start; }
+    .cert-row > .cert-thumb { width: 5.5rem; flex-shrink: 0; }
+    .cert-row > .cert-thumb::after { display: none; }
+    .cert-meta { font-size: .85rem; color: var(--c-body); }
+    .timeline { position: relative; display: grid; gap: 1.1rem; padding-left: 1.6rem; }
+    .timeline::before { content: ""; position: absolute; left: .4rem; top: .5rem; bottom: .5rem; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--c-brand), var(--c-alu)); }
+    .timeline li { position: relative; }
+    .timeline li::before { content: ""; position: absolute; left: -1.55rem; top: .45rem; width: .8rem; height: .8rem; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 3px var(--c-brand); }
+    .timeline li.is-teach::before { box-shadow: inset 0 0 0 3px var(--c-signal); }
+    .tl-date { font-family: 'Space Grotesk',sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--c-brand); font-variant-numeric: tabular-nums; }
+    #certViewer { max-width: min(92vw, 960px); max-height: 92vh; padding: 0; border: 0; border-radius: 1rem; background: #fff; box-shadow: 0 30px 80px -20px rgba(20,33,28,.5); }
+    #certViewer::backdrop { background: rgba(10,30,24,.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    #certViewer img { display: block; max-width: 100%; max-height: calc(92vh - 4rem); margin: 0 auto; object-fit: contain; }
+    #certViewer figcaption { padding: .8rem 3.5rem .9rem 1.1rem; font-size: .92rem; font-weight: 600; color: var(--c-ink); }
+    #certViewer .close { position: absolute; right: .6rem; bottom: .45rem; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; color: var(--c-ink); background: var(--c-mist); }
+    @media (prefers-reduced-motion: reduce) { .cert-thumb img { transition: none; } .cert-thumb:hover img { transform: none; } }
+
+    /* === Quote === */
+    .quote { position: relative; border-radius: 1.25rem; padding: 2rem 1.5rem 2rem 2rem; background: rgba(255,255,255,.62); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      box-shadow: inset 0 1px 0 #fff, 0 10px 30px -16px color-mix(in srgb, var(--c-brand) 28%, transparent); }
+    .quote::before { content: ""; position: absolute; left: 0; top: 1.25rem; bottom: 1.25rem; width: 4px; border-radius: 4px; background: linear-gradient(180deg, var(--c-brand), var(--c-brand2)); }
+    .quote-mark { position: absolute; right: 1.25rem; top: .25rem; font-family: 'Space Grotesk',serif; font-size: 5rem; line-height: 1; color: color-mix(in srgb, var(--c-brand) 14%, transparent); pointer-events: none; }
+
+    /* === Case / Blog === */
+    .tag { display: inline-block; padding: .25rem .75rem; border-radius: 999px; font-size: .78rem; font-weight: 600; color: var(--c-brand); background: color-mix(in srgb, var(--c-brand) 9%, #fff); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 20%, transparent); }
+    .result-box { border-radius: 1rem; padding: 1rem 1.15rem; background: linear-gradient(135deg, color-mix(in srgb, var(--c-brand) 8%, #fff), color-mix(in srgb, var(--c-brand2) 8%, #fff)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-brand) 14%, transparent); }
+    .result-num { font-family: 'Space Grotesk','Noto Sans TC',sans-serif; font-weight: 700; font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem); line-height: 1.15; }
+    .todo { color: #92400e; background: #fef3c7; border-radius: .35rem; padding: .05rem .4rem; font-size: .88em; }
+    .badge-soon { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .7rem; border-radius: 999px; font-size: .78rem; font-weight: 600; color: var(--c-signaldeep); background: color-mix(in srgb, var(--c-signal) 12%, #fff); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-signal) 35%, transparent); }
+    .badge-soon::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c-signal); animation: dotPulse 1.6s ease-in-out infinite; }
+    .placeholder-pill { display: inline-flex; align-items: center; gap: .6rem; padding: .7rem 1.2rem; border-radius: 999px; background: rgba(255,255,255,.7); box-shadow: inset 0 0 0 1px rgba(20,33,28,.16); border: 1px dashed rgba(138,154,165,.55); color: var(--c-body); font-size: .95rem; }
+
+    /* === Reveal（進場動畫） === */
+    .js .reveal { opacity: 0; transform: translateY(22px); }
+    .js .reveal.in { opacity: 1; transform: none; }
+    .reveal:not(.glass) { transition: opacity .7s ease var(--d, 0ms), transform .7s ease var(--d, 0ms); }
+
+    /* === Reduced motion：關閉粒子、打字機、光暈與進場動畫，內容直接完整顯示 === */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      #bgCanvas { display: none; }
+      .glow, .chip, .spin-a, .spin-b, .flow, .mouse i, .cursor, .cta-dot, .badge-soon::before, #mobileMenu { animation: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+      .glass, .reveal:not(.glass), .cta, .cta-l1, .cta-l2, .nav-link::after { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <!-- === Background layers === -->
+  <div class="bg-glow" aria-hidden="true"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== Header / Nav ===================== -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-2.5 font-display text-lg font-bold text-ink" aria-label="潘佑明 — 回到首頁">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-brand to-brand2 text-sm font-bold text-white" aria-hidden="true">P</span>
+        <span>潘佑明</span>
+      </a>
+
+      <nav aria-label="主選單" class="hidden lg:block">
+        <ul class="flex items-center gap-4 xl:gap-6">
+          <li><a class="nav-link" href="#home">首頁</a></li>
+          <li><a class="nav-link" href="#about">關於我</a></li>
+          <li><a class="nav-link" href="#solutions">AI 解決方案</a></li>
+          <li><a class="nav-link" href="#cases">案例展示</a></li>
+          <li><a class="nav-link" href="#honors">榮譽認證</a></li>
+          <li><a class="nav-link" href="#blog">技術部落格</a></li>
+          <li><a class="nav-link" href="#aero">航太方案</a></li>
+          <li><a class="nav-link" href="#contact">聯絡我</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <!-- 右側固定「預約諮詢」 -->
+        <a class="cta cta-sm cta--nav" href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" aria-label="預約諮詢（於新分頁開啟 Google 行事曆）">
+          <span class="cta-labels">
+            <span class="cta-l1">預約諮詢</span>
+            <span class="cta-l2" aria-hidden="true"><i class="cta-dot"></i>Status: Ready to Connect</span>
+          </span>
+        </a>
+        <button id="menuBtn" type="button" class="grid h-10 w-10 place-items-center rounded-xl text-ink hover:bg-brand/10 lg:hidden" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path id="menuIcon" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 手機 / 平板漢堡選單 -->
+    <div id="mobileMenu" hidden class="mx-3 rounded-2xl border border-white/80 bg-white/90 p-2 shadow-xl backdrop-blur-xl lg:hidden">
+      <ul aria-label="手機主選單">
+        <li><a class="menu-link" href="#home">首頁</a></li>
+        <li><a class="menu-link" href="#about">關於我</a></li>
+        <li><a class="menu-link" href="#solutions">AI 解決方案</a></li>
+        <li><a class="menu-link" href="#cases">案例展示</a></li>
+        <li><a class="menu-link" href="#honors">榮譽與認證</a></li>
+        <li><a class="menu-link" href="#blog">技術部落格</a></li>
+        <li><a class="menu-link" href="#aero">航空產業技術解決方案</a></li>
+        <li><a class="menu-link" href="#contact">聯絡我</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== 1. Hero ===================== -->
+    <section id="home" aria-labelledby="heroTitle" class="relative flex min-h-[100svh] items-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+      <div class="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_.85fr]">
+        <div>
+          <p class="reveal mb-6 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-sm font-medium text-body shadow-[inset_0_0_0_1px_rgba(14,92,69,.2)] backdrop-blur">
+            <span class="cta-dot" aria-hidden="true"></span>Aerospace × AI Smart Manufacturing
+          </p>
+
+          <!-- 主標題（打字機只播放一次；ht-full 保留完整文字供閱讀器 / 無動畫情境使用） -->
+          <h1 id="heroTitle" class="hero-title" aria-label="以航太等級的嚴謹，打造AI智慧製造">
+            <span class="ht-full grad-text" id="htFull">以航太等級的嚴謹，<br>打造AI智慧製造</span>
+            <span class="ht-typed grad-text" id="htTyped" aria-hidden="true"></span>
+          </h1>
+
+          <p class="reveal mt-7 max-w-2xl overflow-hidden text-base leading-relaxed text-body sm:text-lg" style="--d:150ms">
+            <span class="hero-meta"><span>14 年精密加工經驗</span><span>11 年航太製程開發</span><span>OPEN MIND hyperMILL 台灣區 TOP USER</span></span>
+          </p>
+
+          <div class="reveal mt-9 flex flex-wrap items-center gap-4" style="--d:300ms">
+            <a class="cta cta-lg" href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" aria-label="預約諮詢（於新分頁開啟 Google 行事曆）">
+              <span class="cta-labels">
+                <span class="cta-l1">預約諮詢</span>
+                <span class="cta-l2" aria-hidden="true"><i class="cta-dot"></i>Status: Ready to Connect</span>
+              </span>
+            </a>
+            <a class="btn-ghost" href="#cases" aria-label="查看案例，捲動至案例展示區塊">查看案例 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- 裝飾：AI 節點軌道（純 SVG / CSS，文字僅取自本站既有內容） -->
+        <div class="orbit reveal hidden lg:block" aria-hidden="true" style="--d:200ms">
+          <svg viewBox="0 0 400 400">
+            <defs>
+              <linearGradient id="gCore" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--c-brand)"/><stop offset="1" style="stop-color:var(--c-brand2)"/></linearGradient>
+              <radialGradient id="gHalo"><stop offset="0" style="stop-color:var(--c-brand);stop-opacity:.28"/><stop offset="1" style="stop-color:var(--c-brand);stop-opacity:0"/></radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="190" fill="url(#gHalo)"/>
+            <circle class="ring" cx="200" cy="200" r="170"/>
+            <circle class="ring ring-dash" cx="200" cy="200" r="120"/>
+            <circle class="ring" cx="200" cy="200" r="72"/>
+            <g class="spin-a">
+              <circle cx="370" cy="200" r="6" style="fill:var(--c-brand)"/>
+              <circle cx="115" cy="347" r="5" style="fill:var(--c-brand2)"/>
+              <circle cx="85" cy="90" r="4" style="fill:var(--c-signal)"/>
+              <line class="flow" x1="370" y1="200" x2="200" y2="200" style="stroke:var(--c-brand);stroke-opacity:.35"/>
+              <line class="flow" x1="115" y1="347" x2="200" y2="200" style="stroke:var(--c-brand2);stroke-opacity:.35"/>
+            </g>
+            <g class="spin-b">
+              <circle cx="320" cy="200" r="4.5" style="fill:var(--c-brand2)"/>
+              <circle cx="140" cy="113" r="4.5" style="fill:var(--c-brand)"/>
+              <circle cx="140" cy="287" r="4.5" style="fill:var(--c-signal)"/>
+            </g>
+            <circle cx="200" cy="200" r="38" fill="url(#gCore)"/>
+            <text x="200" y="208" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="Space Grotesk, sans-serif">AI</text>
+          </svg>
+          <span class="chip" style="left:2%;top:14%">五軸加工</span>
+          <span class="chip" style="right:0;top:46%;animation-delay:-2s">刀具壽命</span>
+          <span class="chip" style="left:8%;bottom:10%;animation-delay:-4s">預測性維護</span>
+        </div>
+      </div>
+
+      <!-- 往下捲動提示 -->
+      <a href="#stats" class="scroll-hint absolute bottom-6 left-1/2 -translate-x-1/2" aria-label="往下捲動至數據亮點">
+        <span class="mouse" aria-hidden="true"><i></i></span><span aria-hidden="true">SCROLL</span>
+      </a>
+    </section>
+
+    <!-- ===================== 2. 數據亮點列 ===================== -->
+    <section id="stats" aria-label="數據亮點" class="px-4 pb-8 sm:px-6 lg:px-8">
+      <div class="glass reveal mx-auto max-w-6xl px-4 py-7 sm:px-8">
+        <ul class="grid grid-cols-2 gap-x-3 gap-y-7 text-center md:grid-cols-3 xl:grid-cols-6">
+          <li>
+            <p class="stat-num"><span class="count" data-to="14">14</span><span class="unit">年</span></p>
+            <p class="mt-1.5 text-sm text-body">精密加工經驗</p>
+          </li>
+          <li>
+            <!-- TODO: 請確認 — 此處為「9 年航太製造領域」，但 Hero 副標與關於我寫「11 年」航太，數字依你提供的文案原樣保留 -->
+            <p class="stat-num"><span class="count" data-to="9">9</span><span class="unit">年</span></p>
+            <p class="mt-1.5 text-sm text-body">航太製造領域</p>
+          </li>
+          <li>
+            <p class="stat-num"><span class="count" data-to="40">40</span>–<span class="count" data-to="80">80</span><span class="unit">%</span></p>
+            <p class="mt-1.5 text-sm text-body">工時與成本降幅</p>
+          </li>
+          <li>
+            <p class="stat-num"><span class="count" data-to="32">32</span><span class="unit">h</span>→<span class="count" data-to="6">6</span><span class="unit">h</span></p>
+            <p class="mt-1.5 text-sm text-body">單一零件加工時間</p>
+          </li>
+          <li>
+            <p class="stat-num"><span class="unit">約 NT$</span><span class="count" data-to="500">500</span><span class="unit">萬</span></p>
+            <p class="mt-1.5 text-sm text-body">累計節省成本</p>
+          </li>
+          <li>
+            <p class="stat-num"><span class="count" data-to="4">4</span>–<span class="count" data-to="6">6</span><span class="unit">倍</span></p>
+            <p class="mt-1.5 text-sm text-body">高效率加工 vs. 傳統工法</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 3. 關於我 ===================== -->
+    <section id="about" aria-labelledby="aboutTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid items-center gap-10 lg:grid-cols-[300px_1fr] lg:gap-14">
+          <figure class="reveal mx-auto w-full max-w-[280px] lg:max-w-none">
+            <div class="photo-frame">
+              <img src="assets/profile.jpg" alt="潘佑明，長榮航太科技製程工程師" width="854" height="883" style="object-position:50% 25%">
+              <span class="photo-badge"><i class="fa-solid fa-plane-departure" aria-hidden="true"></i>Aerospace Process Engineer</span>
+            </div>
+          </figure>
+
+          <div>
+            <p class="reveal eyebrow">About</p>
+            <h2 id="aboutTitle" class="reveal h2 mt-3" style="--d:80ms">關於我</h2>
+            <!-- 【文案】 -->
+            <p class="reveal mt-5 text-base leading-[1.9] text-body sm:text-lg" style="--d:160ms">
+              我是潘佑明，長榮航太科技製程工程師，有 14 年精密加工經驗，其中 11 年在航太製造領域。我的工作重點是把複雜零件轉成穩定、可量產、成本有競爭力的製程，也在推動加工經驗走向數據化與 AI 智慧製造。
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 張玻璃擬態卡片：桌機 3×2、平板 2×3、手機 1 欄 -->
+        <ul data-stagger class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🔧</span>
+            <h3 class="mt-4 text-lg font-bold">從加工現場走到製程開發</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">14 年精密加工經驗、11 年航太製造資歷，讓我同時懂機台上的實際狀況與工程端的設計要求。面對國際大廠的嚴格規格，我習慣先想清楚「怎麼穩定做出來」，再決定「怎麼做得更快」。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">💰</span>
+            <h3 class="mt-4 text-lg font-bold">用數字證明改善</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">我相信改善要能被量化。過去的專案累計降低 40–80% 的工時與成本，其中一個零件的加工時間從 32 小時縮短到 6 小時，累計節省約 NT$500 萬。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🌐</span>
+            <h3 class="mt-4 text-lg font-bold">勇於嘗試新工法</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">我不滿足於「一直以來都這樣做」。遇到新的加工技術，我會直接和國外原廠技術團隊交流，先驗證、再導入量產，讓新工法真正在產線上發揮效益。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🤝</span>
+            <h3 class="mt-4 text-lg font-bold">把經驗說清楚、傳下去</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">進駐協力廠商的經驗讓我體會到：技術要能複製，關鍵在於把做法講清楚、寫成標準。這也是我現在投入經驗數位化的出發點。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🏆</span>
+            <h3 class="mt-4 text-lg font-bold">肯定與榮譽</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">曾獲長榮航太 2021 與 2024 卓越貢獻獎、品質績效優等獎與第二名，以及 OPEN MIND hyperMILL 台灣區 TOP USER。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🤖</span>
+            <h3 class="mt-4 text-lg font-bold">下一步：AI 智慧製造</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">我想把老師傅的隱性經驗轉成可保存的數位資產，目前聚焦三個方向：自動化報價模型、刀具壽命預測、CNC 預測性維護。目標是讓航太製造更快、更準、更透明。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 4. AI 解決方案 ===================== -->
+    <section id="solutions" aria-labelledby="solTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">AI Solutions</p>
+        <h2 id="solTitle" class="reveal h2 mt-3" style="--d:80ms">AI 解決方案<span class="mx-2 text-brand/40" aria-hidden="true">｜</span><span class="block sm:inline grad-text">讓製造經驗成為可複製的智慧</span></h2>
+        <!-- 【導言】 -->
+        <p class="reveal mt-6 max-w-3xl text-base leading-[1.9] text-body sm:text-lg" style="--d:160ms">
+          航太與半導體製造的競爭力，長期建立在老師傅的經驗上。但經驗不容易傳承，報價常仰賴個人判斷，刀具與設備成本也難以預估，這些是許多工廠共同的痛點。我以 14 年精密加工、11 年航太製程開發的現場經驗為基礎，協助企業把經驗轉成可量化、可複製的數位能力。
+        </p>
+
+        <ul data-stagger class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">📐</span>
+            <h3 class="mt-4 text-lg font-bold">自動化報價模型</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">結合 CAD 特徵與歷史工時數據建立成本估算模型，縮短報價時間，也減少技術端與業務端的認知落差。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🔧</span>
+            <h3 class="mt-4 text-lg font-bold">刀具壽命預測</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">分析主軸負載等加工數據，預測刀具壽命，在加工品質與換刀成本之間找到平衡點。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">⚙️</span>
+            <h3 class="mt-4 text-lg font-bold">CNC 預測性維護</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">建立設備維護週期模型，把被動維修轉為主動預防，降低非預期停機對交期的衝擊。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true">🧠</span>
+            <h3 class="mt-4 text-lg font-bold">隱性經驗數位化</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">把製程 know-how 整理成標準化的數位資產，作為跨廠區製程標準化與人才培育的基礎。</p>
+          </li>
+        </ul>
+
+        <!-- 【收尾段落，引言樣式】 -->
+        <blockquote class="quote reveal mt-12">
+          <span class="quote-mark" aria-hidden="true">”</span>
+          <p class="relative text-base font-medium leading-[1.9] text-ink sm:text-lg">
+            我曾透過刀具壽命管理與路徑優化，達成 40–80% 的工時與成本降幅，也曾進駐多家協力廠商完成技術轉移。這些經驗讓我確信：AI 要落地，關鍵在於能否與現場製程、人員及供應鏈接軌。我的角色，就是讓 AI 成為現場真正用得上的工具。
+          </p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===================== 5. 案例展示 ===================== -->
+    <section id="cases" aria-labelledby="caseTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">Case Studies</p>
+        <h2 id="caseTitle" class="reveal h2 mt-3" style="--d:80ms">案例展示</h2>
+
+        <ul data-stagger class="mt-12 grid gap-5 lg:grid-cols-3">
+          <!-- 案例 A -->
+          <li class="glass card-hover reveal flex flex-col p-6">
+            <!-- TODO: 請替換 — 如需作品圖片 / 零件照，請在此加入（需先確認客戶保密規範） -->
+            <span class="tag self-start">案例 A｜製程優化</span>
+            <h3 class="mt-4 text-xl font-bold">單一零件加工時間 32 小時 → 6 小時</h3>
+            <dl class="mt-4 flex-1 space-y-3 text-[.95rem] leading-relaxed">
+              <div><dt class="font-bold text-ink">挑戰</dt><dd>單一零件加工時間長達 32 小時。</dd></div>
+              <div><dt class="font-bold text-ink">做法</dt><dd>透過刀具壽命管理、路徑優化與製程重組。 <!-- TODO: 請確認此零件的具體做法，再補充細節 --><span class="todo">待補充：此零件的具體做法</span></dd></div>
+            </dl>
+            <div class="result-box mt-5">
+              <p class="text-xs font-bold tracking-widest text-body">成果</p>
+              <p class="result-num grad-text">32h → 6h</p>
+              <p class="mt-1 text-sm">累計節省約 NT$500 萬</p>
+            </div>
+          </li>
+
+          <!-- 案例 B -->
+          <li class="glass card-hover reveal flex flex-col p-6">
+            <!-- TODO: 請替換 — 如需作品圖片 / 加工現場照，請在此加入 -->
+            <span class="tag self-start">案例 B｜高效率加工導入</span>
+            <h3 class="mt-4 text-xl font-bold">MAXX Machining 擺線加工與桶型刀加工導入航太量產</h3>
+            <dl class="mt-4 flex-1 space-y-3 text-[.95rem] leading-relaxed">
+              <div><dt class="font-bold text-ink">挑戰</dt><dd>以傳統工法為對照基準，尋求更高的加工效率。 <!-- TODO: 請補充導入前的實際瓶頸 --><span class="todo">待補充：導入前的加工瓶頸</span></dd></div>
+              <div><dt class="font-bold text-ink">做法</dt><dd>與德國及新加坡原廠技術團隊合作，率先把 MAXX Machining 高效率擺線加工與桶型刀加工導入航太量產。</dd></div>
+            </dl>
+            <div class="result-box mt-5">
+              <p class="text-xs font-bold tracking-widest text-body">成果</p>
+              <p class="result-num grad-text">4–6 倍</p>
+              <p class="mt-1 text-sm">效率達傳統工法 4–6 倍</p>
+            </div>
+          </li>
+
+          <!-- 案例 C -->
+          <li class="glass card-hover reveal flex flex-col p-6">
+            <!-- TODO: 請替換 — 如需作品圖片 / 現場照，請在此加入 -->
+            <span class="tag self-start">案例 C｜供應鏈技術轉移</span>
+            <h3 class="mt-4 text-xl font-bold">進駐協力廠商，完成製程轉移與量產問題排除</h3>
+            <dl class="mt-4 flex-1 space-y-3 text-[.95rem] leading-relaxed">
+              <div><dt class="font-bold text-ink">挑戰</dt><dd>協力廠商需要完成製程轉移，並排除量產問題。</dd></div>
+              <div><dt class="font-bold text-ink">做法</dt><dd>進駐協力廠商，負責製程轉移與量產問題排除。 <!-- TODO: 請補充廠商數量、轉移項目等可公開的量化資訊 --><span class="todo">待補充：可公開的量化成果</span></dd></div>
+            </dl>
+            <div class="result-box mt-5">
+              <p class="text-xs font-bold tracking-widest text-body">成果</p>
+              <p class="result-num grad-text">標準化製程</p>
+              <p class="mt-1 text-sm">建立航太及半導體等級標準化製程</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 5.5 榮譽與認證 ===================== -->
+    <!-- 隱私：含身分證字號／生日的證書（技術士證、TQC、工研院、iPAS）只列文字不放圖；圖片已遮蔽證書編號與 QR code -->
+    <section id="honors" aria-labelledby="honorsTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">Awards &amp; Certifications</p>
+        <h2 id="honorsTitle" class="reveal h2 mt-3" style="--d:80ms">榮譽與認證</h2>
+        <p class="reveal mt-5 max-w-3xl text-base leading-[1.9] text-body sm:text-lg" style="--d:160ms">
+          從 CNC 銑床技術士到 AI 應用認證，一路累積的是同一件事：把製造現場的經驗，用新的工具做得更好。點擊圖片可放大檢視證書。
+        </p>
+
+        <!-- 專業獎項 -->
+        <h3 class="sub-h reveal mt-14"><i class="fa-solid fa-trophy" aria-hidden="true"></i>專業獎項</h3>
+        <div class="mt-6 grid gap-5 lg:grid-cols-[1.15fr_1fr]">
+          <!-- 主打獎項 -->
+          <article class="glass card-hover reveal grid gap-6 p-5 sm:grid-cols-[minmax(0,220px)_1fr] sm:p-6">
+            <button type="button" class="cert-thumb aspect-[3/4]" data-full="assets/award-egat-2024.jpg" data-caption="長榮航太 2024 卓越貢獻獎｜技術創新">
+              <img src="assets/award-egat-2024.jpg" alt="長榮航太 2024 卓越貢獻獎（技術創新）獎座" width="900" height="1195" loading="lazy">
+            </button>
+            <div class="flex flex-col justify-center">
+              <span class="award-year">2024.12</span>
+              <h4 class="mt-2 text-2xl font-bold text-ink">卓越貢獻獎｜技術創新</h4>
+              <p class="mt-1 text-sm font-medium text-brand">長榮航太科技 · Outstanding Contribution Award</p>
+              <p class="mt-4 text-[.95rem] leading-relaxed">以製程技術創新獲公司年度卓越貢獻獎肯定，是航太製程開發與高效率加工導入成果的具體認可。</p>
+            </div>
+          </article>
+
+          <div class="grid gap-5">
+            <article class="glass card-hover reveal cert-row p-4">
+              <button type="button" class="cert-thumb aspect-square" data-full="assets/award-hypermill.jpg" data-caption="OPEN MIND hyperMILL 台灣區 TOP USER">
+                <img src="assets/award-hypermill.jpg" alt="OPEN MIND hyperMILL TOP USER 水晶獎座" width="474" height="559" loading="lazy">
+              </button>
+              <div class="min-w-0">
+                <h4 class="font-bold text-ink">hyperMILL 台灣區 TOP USER</h4>
+                <p class="cert-meta mt-1">OPEN MIND（台灣奧斯麥科技）頒贈，肯定在五軸 CAM 加工的應用深度。</p>
+              </div>
+            </article>
+            <article class="glass card-hover reveal cert-row p-4">
+              <button type="button" class="cert-thumb aspect-square" data-full="assets/award-2019-q2.jpg" data-caption="長榮航太 2019 第二季品質績效提升評鑑｜優等">
+                <img src="assets/award-2019-q2.jpg" alt="2019 第二季品質績效提升評鑑優等榮譽狀" width="900" height="1269" loading="lazy" style="object-position:50% 20%">
+              </button>
+              <div class="min-w-0">
+                <span class="award-year">2019 Q2</span>
+                <h4 class="font-bold text-ink">品質績效提升評鑑｜優等</h4>
+                <p class="cert-meta mt-1">長榮航太科技 製造部機械加工課</p>
+              </div>
+            </article>
+            <article class="glass card-hover reveal cert-row p-4">
+              <button type="button" class="cert-thumb aspect-square" data-full="assets/award-2019-q3.jpg" data-caption="長榮航太 2019 第三季品質績效提升評鑑｜第二名">
+                <img src="assets/award-2019-q3.jpg" alt="2019 第三季品質績效提升評鑑第二名榮譽狀" width="900" height="1267" loading="lazy" style="object-position:50% 20%">
+              </button>
+              <div class="min-w-0">
+                <span class="award-year">2019 Q3</span>
+                <h4 class="font-bold text-ink">品質績效提升評鑑｜第二名</h4>
+                <p class="cert-meta mt-1">長榮航太科技 製造部機械加工課</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 專業認證 -->
+        <h3 class="sub-h reveal mt-16"><i class="fa-solid fa-certificate" aria-hidden="true"></i>AI 與數位認證</h3>
+        <ul data-stagger class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <li class="glass card-hover reveal flex flex-col p-4">
+            <button type="button" class="cert-thumb aspect-[4/3]" data-full="assets/cert-azure-ai.jpg" data-caption="Microsoft 認證：Azure AI 入門（Azure AI Fundamentals）">
+              <img src="assets/cert-azure-ai.jpg" alt="Microsoft Azure AI Fundamentals 認證證書" width="1084" height="641" loading="lazy">
+            </button>
+            <h4 class="mt-4 font-bold text-ink">Azure AI Fundamentals</h4>
+            <p class="cert-meta mt-1">Microsoft 認證 · 2026.06</p>
+          </li>
+          <li class="glass card-hover reveal flex flex-col p-4">
+            <button type="button" class="cert-thumb aspect-[4/3]" data-full="assets/cert-iii-genai.jpg" data-caption="資策會 生成式 AI 能力認證（2025.11 – 2027.11）">
+              <img src="assets/cert-iii-genai.jpg" alt="資策會生成式 AI 能力認證證書" width="900" height="1273" loading="lazy" style="object-position:50% 30%">
+            </button>
+            <h4 class="mt-4 font-bold text-ink">生成式 AI 能力認證</h4>
+            <p class="cert-meta mt-1">資訊工業策進會 · 2025.11</p>
+          </li>
+          <li class="glass card-hover reveal flex flex-col p-4">
+            <button type="button" class="cert-thumb aspect-[4/3]" data-full="assets/cert-gemini-educator.jpg" data-caption="Google Gemini Certified Educator（2025.09 – 2028.09）">
+              <img src="assets/cert-gemini-educator.jpg" alt="Google Gemini Certified Educator 證書" width="1066" height="827" loading="lazy">
+            </button>
+            <h4 class="mt-4 font-bold text-ink">Gemini Certified Educator</h4>
+            <p class="cert-meta mt-1">Google for Education · 2025.09</p>
+          </li>
+          <li class="glass card-hover reveal flex flex-col p-4">
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" class="cert-thumb aspect-[4/3]" data-full="assets/cert-aws-genai-business.jpg" data-caption="AWS Generative AI: Business Skill">
+                <img src="assets/cert-aws-genai-business.jpg" alt="AWS Generative AI Business Skill 證書" width="600" height="447" loading="lazy">
+              </button>
+              <button type="button" class="cert-thumb aspect-[4/3]" data-full="assets/cert-aws-genai-technical.jpg" data-caption="AWS Generative AI: Technical Skill">
+                <img src="assets/cert-aws-genai-technical.jpg" alt="AWS Generative AI Technical Skill 證書" width="600" height="447" loading="lazy">
+              </button>
+            </div>
+            <h4 class="mt-4 font-bold text-ink">Generative AI 雙技能</h4>
+            <p class="cert-meta mt-1">AWS · Business Skill ＋ Technical Skill</p>
+          </li>
+        </ul>
+
+        <!-- 無圖認證：證書含個資，只列文字 -->
+        <div class="mt-5 grid gap-5 lg:grid-cols-2">
+          <div class="glass reveal p-6">
+            <p class="text-sm font-bold tracking-widest text-body">AI 能力鑑定</p>
+            <ul class="mt-4 space-y-4">
+              <li class="cert-row"><span class="issuer-chip" aria-hidden="true"><i class="fa-solid fa-award"></i></span>
+                <div><p class="font-bold text-ink">iPAS AI 應用規劃師（初級）</p><p class="cert-meta">經濟部產業人才能力鑑定 · 成績已達授證標準（2026.04）</p></div></li>
+              <li class="cert-row"><span class="issuer-chip" aria-hidden="true"><i class="fa-solid fa-award"></i></span>
+                <div><p class="font-bold text-ink">TQC 生成式 AI 應用與技術（專業級）</p><p class="cert-meta">電腦技能基金會 · 2026.04</p></div></li>
+            </ul>
+          </div>
+          <div class="glass reveal p-6">
+            <p class="text-sm font-bold tracking-widest text-body">製造與工程</p>
+            <ul class="mt-4 space-y-4">
+              <li class="cert-row"><span class="issuer-chip" aria-hidden="true"><i class="fa-solid fa-gears"></i></span>
+                <div><p class="font-bold text-ink">銑床－CNC 銑床 乙級技術士</p><p class="cert-meta">勞動部（原行政院勞工委員會） · 2011</p></div></li>
+              <li class="cert-row"><span class="issuer-chip" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
+                <div><p class="font-bold text-ink">AutoCAD 2010 Certified Professional</p><p class="cert-meta">Autodesk · 2010</p></div></li>
+              <li class="cert-row"><span class="issuer-chip" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
+                <div><p class="font-bold text-ink">TQC AutoCAD 2D（專業級）</p><p class="cert-meta">電腦技能基金會 · 2008</p></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 進修與教學 -->
+        <h3 class="sub-h reveal mt-16"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>進修與教學</h3>
+        <div class="mt-6 grid items-start gap-8 lg:grid-cols-[1fr_300px]">
+          <ol class="timeline reveal">
+            <li><p class="tl-date">2026.08</p><p class="font-bold text-ink">精準記錄術：智慧會議自動化記錄</p><p class="cert-meta">桃園市政府就業職訓服務處 · 2 小時</p></li>
+            <li><p class="tl-date">2026.07</p><p class="font-bold text-ink">Excel 變身器：報表自動化與洞察</p><p class="cert-meta">桃園市政府就業職訓服務處 · 3 小時</p></li>
+            <li><p class="tl-date">2026.05 – 06</p><p class="font-bold text-ink">供應鏈與營運優化：RPA × n8n 雙軌導入</p><p class="cert-meta">經濟部商業發展署 服務業 AI 人才培育計畫 · 30 小時</p></li>
+            <li class="is-teach"><p class="tl-date">2025.12</p><p class="font-bold text-ink">AI for Good「AI 實戰工作坊」<span class="tag ml-2 align-middle">教師參與</span></p><p class="cert-meta">國立臺灣科技大學 · 提升高中職學生 AI 素養</p></li>
+            <li><p class="tl-date">2025.12</p><p class="font-bold text-ink">產業 AI 應用人才培訓課程</p><p class="cert-meta">工研院產業學院（經濟部產業發展署委託）</p></li>
+            <li><p class="tl-date">2025.12</p><p class="font-bold text-ink">運用 AI 做銷售與需求分析</p><p class="cert-meta">桃園市政府員工生產力系列課程 · 3 小時</p></li>
+            <li><p class="tl-date">2025.09</p><p class="font-bold text-ink">產業 AI 人才培訓</p><p class="cert-meta">台北市電腦公會（經濟部產業發展署計畫） · 15 小時</p></li>
+          </ol>
+          <figure class="glass reveal p-4">
+            <button type="button" class="cert-thumb aspect-[3/4]" data-full="assets/ai-for-good-ntust.jpg" data-caption="2025 AI for Good「AI 實戰工作坊」研習證書｜國立臺灣科技大學">
+              <img src="assets/ai-for-good-ntust.jpg" alt="國立臺灣科技大學 AI for Good 研習證書" width="900" height="1274" loading="lazy" style="object-position:50% 15%">
+            </button>
+            <figcaption class="cert-meta mt-3 text-center">AI for Good 高中職生人工智慧賦能科普教育</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 證書放大檢視 -->
+    <dialog id="certViewer" aria-label="證書檢視">
+      <figure class="relative m-0">
+        <img src="" alt="">
+        <figcaption></figcaption>
+        <button type="button" class="close" aria-label="關閉"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </figure>
+    </dialog>
+
+    <!-- ===================== 6. 技術部落格 ===================== -->
+    <section id="blog" aria-labelledby="blogTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">Tech Blog</p>
+        <h2 id="blogTitle" class="reveal h2 mt-3" style="--d:80ms">技術部落格</h2>
+
+        <!-- TODO: 請替換 — 以下 3 篇皆為佔位標題與摘要，文章完成後請改為實際內容、日期、閱讀時間與連結 -->
+        <ul data-stagger class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <li class="glass card-hover reveal flex flex-col p-6">
+            <span class="badge-soon self-start">即將發布</span>
+            <h3 class="mt-4 text-lg font-bold">五軸加工的隱性經驗，如何變成資料？</h3>
+            <p class="mt-2 flex-1 text-[.95rem] leading-relaxed text-body"><span class="todo">TODO：文章摘要</span></p>
+            <p class="mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t border-alu/70 pt-4 text-sm text-body"><span>發布日期：待定</span><span>閱讀時間：待定</span></p>
+          </li>
+          <li class="glass card-hover reveal flex flex-col p-6">
+            <span class="badge-soon self-start">即將發布</span>
+            <h3 class="mt-4 text-lg font-bold">刀具壽命預測：從主軸負載開始</h3>
+            <p class="mt-2 flex-1 text-[.95rem] leading-relaxed text-body"><span class="todo">TODO：文章摘要</span></p>
+            <p class="mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t border-alu/70 pt-4 text-sm text-body"><span>發布日期：待定</span><span>閱讀時間：待定</span></p>
+          </li>
+          <li class="glass card-hover reveal flex flex-col p-6 md:col-span-2 lg:col-span-1">
+            <span class="badge-soon self-start">即將發布</span>
+            <h3 class="mt-4 text-lg font-bold">製造業導入 AI，為什麼常卡在現場？</h3>
+            <p class="mt-2 flex-1 text-[.95rem] leading-relaxed text-body"><span class="todo">TODO：文章摘要</span></p>
+            <p class="mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t border-alu/70 pt-4 text-sm text-body"><span>發布日期：待定</span><span>閱讀時間：待定</span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 6.5 航空產業技術解決方案 ===================== -->
+    <section id="aero" aria-labelledby="aeroTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="reveal eyebrow">Aerospace Solutions</p>
+        <h2 id="aeroTitle" class="reveal h2 mt-3" style="--d:80ms">航空產業技術解決方案</h2>
+
+        <ul data-stagger class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true"><i class="fa-solid fa-gears"></i></span>
+            <h3 class="mt-4 text-lg font-bold">高階五軸製程開發</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">主導 GE、Boeing 與 ASML 關鍵零組件的製程開發，涵蓋發動機擴散器、軸承座，以及半導體設備結構件。擅長把複雜幾何拆解成有系統的量產流程，縮短開發週期。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
+            <h3 class="mt-4 text-lg font-bold">數據驅動的成本工程</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">透過刀具壽命管理、路徑優化與製程重組，在多項專案中降低工時與成本。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true"><i class="fa-solid fa-earth-asia"></i></span>
+            <h3 class="mt-4 text-lg font-bold">跨國技術創新</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">獲選 OPEN MIND hyperMILL 台灣區 TOP USER，並與德國及新加坡原廠技術團隊合作，率先把 MAXX Machining 高效率擺線加工與桶型刀加工導入航太量產，效率達傳統工法的 4–6 倍。</p>
+          </li>
+          <li class="glass card-hover reveal p-6">
+            <span class="icon-chip" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
+            <h3 class="mt-4 text-lg font-bold">供應鏈技術賦能</h3>
+            <p class="mt-2 text-[.95rem] leading-relaxed">曾進駐多家協力廠商，負責製程轉移與量產問題排除，協助他們建立航太及半導體等級的標準化製程，提升整體供應鏈產能。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 7. 聯絡我 ===================== -->
+    <section id="contact" aria-labelledby="contactTitle" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="glass reveal mx-auto max-w-4xl px-6 py-14 text-center sm:px-12 sm:py-16">
+        <p class="eyebrow justify-center">Contact</p>
+        <h2 id="contactTitle" class="h2 mx-auto mt-3 max-w-2xl" style="text-wrap:balance">讓我們一起把製造經驗變成競爭力</h2>
+
+        <!-- 社群連結 -->
+        <ul class="mt-9 flex flex-wrap items-center justify-center gap-4" aria-label="社群連結">
+          <li><a class="social-btn social-btn--line" href="https://line.me/ti/p/CWwpmqpmHB" target="_blank" rel="noopener noreferrer" aria-label="LINE（於新分頁開啟）" title="LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a></li>
+          <li><a class="social-btn social-btn--fb" href="https://www.facebook.com/daniel.pan.5815" target="_blank" rel="noopener noreferrer" aria-label="Facebook（於新分頁開啟）" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+          <li><a class="social-btn social-btn--in" href="https://www.linkedin.com/in/%E4%BD%91%E6%98%8E-%E6%BD%98-894149197/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn（於新分頁開啟）" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li><a class="social-btn social-btn--gh" href="https://github.com/danielpan1106-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub（於新分頁開啟）" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+        </ul>
+
+        <!-- 需求表單 -->
+        <div class="form-box mx-auto mt-8 flex max-w-2xl flex-col items-start gap-5 sm:flex-row sm:items-center">
+          <span class="icon-chip shrink-0" aria-hidden="true"><i class="fa-solid fa-file-pen"></i></span>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold">填寫需求表單</h3>
+            <p class="mt-1 text-[.95rem] leading-relaxed text-body">先簡單描述您的製程或 AI 導入需求，我會在了解後與您聯繫。</p>
+          </div>
+          <a class="btn-ghost shrink-0" href="https://docs.google.com/forms/d/e/1FAIpQLSczNtK0bitKQR-POpysxXmlLXf6zlO8_-xHaBr0PSnIPH4iNg/viewform" target="_blank" rel="noopener noreferrer" aria-label="填寫需求表單（於新分頁開啟 Google 表單）">填寫表單 <i class="fa-solid fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="mt-9">
+          <a class="cta cta-lg" href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" aria-label="預約 30 分鐘諮詢（於新分頁開啟 Google 行事曆）">
+            <span class="cta-labels">
+              <span class="cta-l1">預約 30 分鐘諮詢</span>
+              <span class="cta-l2" aria-hidden="true"><i class="cta-dot"></i>Status: Ready to Connect</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- TODO: 請替換 — Email 尚未提供，目前為佔位文字。
+             取得後請改成：<a class="placeholder-pill" href="mailto:你的信箱">你的信箱</a> -->
+        <ul class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <li><span class="placeholder-pill" aria-label="Email 尚未提供（佔位）">✉ Email：<span class="todo">待填入</span></span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== 8. Footer ===================== -->
+  <footer class="px-4 pb-10 pt-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-alu/80 pt-6 text-sm text-body sm:flex-row">
+      <p class="text-center sm:text-left">© 2026 潘佑明｜Aerospace × AI Smart Manufacturing</p>
+      <a href="#home" class="btn-ghost !px-4 !py-2 text-sm" aria-label="回到頁面頂部"><span aria-hidden="true">↑</span> 回到頂部</a>
+    </div>
+  </footer>
+
+  <script>
+  /* =========================================================
+     Interactions — 全部以原生 JS 實作，單一 IIFE 分段
+     ========================================================= */
+  (() => {
+    'use strict';
+    const root = document.documentElement;
+    const $  = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+    const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
+    const hasIO = 'IntersectionObserver' in window;
+
+    /* === Nav：捲動時轉玻璃背景 === */
+    const header = $('#siteHeader');
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* === Nav：手機漢堡選單 === */
+    const menuBtn = $('#menuBtn'), menu = $('#mobileMenu'), icon = $('#menuIcon');
+    const setMenu = open => {
+      menu.hidden = !open;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+      icon.setAttribute('d', open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16');
+      header.classList.toggle('is-scrolled', open || window.scrollY > 12);
+    };
+    menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+    $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+    matchMedia('(min-width: 1024px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+    /* === Nav：標示目前所在區塊 === */
+    const ids = ['home', 'about', 'solutions', 'cases', 'honors', 'blog', 'aero', 'contact'];
+    const navLinks = $$('.nav-link, .menu-link');
+    const setActive = id => navLinks.forEach(a => {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    if (hasIO) {
+      const spy = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      ids.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+    }
+
+    /* === 證書放大檢視 === */
+    const viewer = document.getElementById('certViewer');
+    if (viewer && viewer.showModal) {
+      const vImg = $('img', viewer), vCap = $('figcaption', viewer);
+      $$('.cert-thumb').forEach(btn => btn.addEventListener('click', () => {
+        vImg.src = btn.dataset.full; vImg.alt = btn.dataset.caption; vCap.textContent = btn.dataset.caption;
+        viewer.showModal();
+      }));
+      $('.close', viewer).addEventListener('click', () => viewer.close());
+      viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+    }
+
+    /* === Reveal：進場淡入 + 卡片依序延遲 === */
+    if (hasIO) {
+      $$('[data-stagger]').forEach(group =>
+        $$(':scope > .reveal', group).forEach((el, i) => el.style.setProperty('--d', (i * 90) + 'ms')));
+      const rv = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      $$('.reveal').forEach(el => rv.observe(el));
+    }
+
+    /* === Hero：打字機（只播放一次） === */
+    (() => {
+      if (reduceMQ.matches) return; // reduced-motion：直接顯示完整標題
+      const typed = $('#htTyped');
+      const L1 = '以航太等級的嚴謹，', L2 = '打造AI智慧製造';
+      typed.innerHTML = '<span id="t1"></span><br><span id="t2"></span><span class="cursor" aria-hidden="true"></span>';
+      root.classList.add('typing');
+      const t1 = $('#t1'), t2 = $('#t2'), cur = $('.cursor', typed);
+      const total = L1.length + L2.length;
+      let i = 0;
+      const tick = () => {
+        i++;
+        t1.textContent = L1.slice(0, i);
+        t2.textContent = i > L1.length ? L2.slice(0, i - L1.length) : '';
+        if (i < total) setTimeout(tick, 80 + Math.random() * 60);
+        else setTimeout(() => cur.classList.add('cursor--off'), 2600); // 打完後游標保留數秒再淡出
+      };
+      setTimeout(tick, 500);
+    })();
+
+    /* === 數據亮點：由 0 滾動遞增 === */
+    (() => {
+      const counters = $$('.count');
+      if (!hasIO || reduceMQ.matches) return; // 無法偵測或偏好減少動態：直接顯示最終數字
+      counters.forEach(el => { el.textContent = '0'; });
+      const run = el => {
+        const to = Number(el.dataset.to), dur = 1600, t0 = performance.now();
+        const step = now => {
+          const p = Math.min((now - t0) / dur, 1);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step); else el.textContent = String(to);
+        };
+        requestAnimationFrame(step);
+      };
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => { if (en.isIntersecting) { $$('.count', en.target).forEach(run); obs.unobserve(en.target); } });
+      }, { threshold: 0.35 });
+      io.observe($('#stats'));
+    })();
+
+    /* === Background canvas：粒子連線 / AI 網格 / 資料流 / 浮動節點 === */
+    (() => {
+      const canvas = $('#bgCanvas');
+      const ctx = canvas && canvas.getContext('2d');
+      if (!ctx) return;
+
+      const css = getComputedStyle(root);
+      const toRGB = (v, fb) => { const m = /^#?([0-9a-f]{6})$/i.exec((v || '').trim()); if (!m) return fb; const n = parseInt(m[1], 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+      const BRAND = toRGB(css.getPropertyValue('--c-brand'), [14, 92, 69]);
+      const ACCENT = toRGB(css.getPropertyValue('--c-brand2'), [46, 132, 103]);
+      const SIGNAL = toRGB(css.getPropertyValue('--c-signal'), [224, 123, 18]);
+      const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+
+      let W = 0, H = 0, dpr = 1, pts = [], streams = [], grid = null, linkDist = 130, raf = 0, last = 0, built = false;
+
+      function build() {
+        W = innerWidth; H = innerHeight; dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // 粒子數量依螢幕寬度調整（手機減量）
+        const mobile = W < 640;
+        const n = Math.max(18, Math.min(mobile ? 32 : 80, Math.round(W * H / (mobile ? 16000 : 20000))));
+        linkDist = mobile ? 100 : 135;
+        pts = Array.from({ length: n }, () => {
+          const big = Math.random() < 0.12; // 少量較大的浮動節點
+          const a = Math.random() * Math.PI * 2, sp = (big ? 6 : 10) + Math.random() * 14;
+          return { x: Math.random() * W, y: Math.random() * H, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+                   r: big ? 3 + Math.random() * 1.5 : 1 + Math.random() * 1.2, big, c: Math.random() < 0.7 ? BRAND : ACCENT, ph: Math.random() * 6.28 };
+        });
+        streams = Array.from({ length: mobile ? 3 : 5 }, (_, i) => ({
+          y: H * (0.14 + 0.72 * (i + Math.random() * 0.6) / (mobile ? 3 : 5)), amp: 14 + Math.random() * 22, ph: Math.random() * 6.28,
+          x: Math.random() * W, sp: 70 + Math.random() * 90, len: 200 + Math.random() * 180, c: i % 3 === 2 ? SIGNAL : BRAND }));
+
+        // 預先繪製網格（含邊緣淡出），每幀只 drawImage
+        grid = document.createElement('canvas'); grid.width = canvas.width; grid.height = canvas.height;
+        const g = grid.getContext('2d'); g.scale(dpr, dpr);
+        const step = 56;
+        for (let x = 0; x <= W; x += step) { g.strokeStyle = rgba(BRAND, x % (step * 4) === 0 ? 0.085 : 0.045); g.beginPath(); g.moveTo(x + .5, 0); g.lineTo(x + .5, H); g.stroke(); }
+        for (let y = 0; y <= H; y += step) { g.strokeStyle = rgba(BRAND, y % (step * 4) === 0 ? 0.085 : 0.045); g.beginPath(); g.moveTo(0, y + .5); g.lineTo(W, y + .5); g.stroke(); }
+        g.globalCompositeOperation = 'destination-in';
+        const fade = g.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .15, W / 2, H / 2, Math.max(W, H) * .75);
+        fade.addColorStop(0, 'rgba(0,0,0,1)'); fade.addColorStop(1, 'rgba(0,0,0,.25)');
+        g.fillStyle = fade; g.fillRect(0, 0, W, H);
+        built = true;
+      }
+
+      function update(dt) {
+        for (const p of pts) {
+          p.x += p.vx * dt; p.y += p.vy * dt;
+          if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+          if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+        }
+        for (const s of streams) { s.x += s.sp * dt; if (s.x - s.len > W) s.x = -40; }
+      }
+
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(grid, 0, 0, W, H);
+
+        // 淺色資料流線條
+        for (const s of streams) {
+          const yAt = x => s.y + Math.sin(x * 0.004 + s.ph + t * 0.3) * s.amp;
+          ctx.lineWidth = 1;
+          ctx.strokeStyle = rgba(s.c, 0.06);
+          ctx.beginPath(); for (let x = 0; x <= W; x += 24) { x ? ctx.lineTo(x, yAt(x)) : ctx.moveTo(x, yAt(x)); } ctx.stroke();
+          const x0 = s.x - s.len, gr = ctx.createLinearGradient(x0, 0, s.x, 0);
+          gr.addColorStop(0, rgba(s.c, 0)); gr.addColorStop(1, rgba(s.c, 0.42));
+          ctx.strokeStyle = gr; ctx.lineWidth = 1.4;
+          ctx.beginPath(); for (let x = x0; x <= s.x; x += 10) { x === x0 ? ctx.moveTo(x, yAt(x)) : ctx.lineTo(x, yAt(x)); } ctx.stroke();
+          ctx.fillStyle = rgba(s.c, 0.6); ctx.beginPath(); ctx.arc(s.x, yAt(s.x), 2, 0, 6.283); ctx.fill();
+        }
+
+        // 粒子連線
+        const ld2 = linkDist * linkDist;
+        ctx.lineWidth = 1;
+        for (let i = 0; i < pts.length; i++) {
+          const a = pts[i];
+          for (let j = i + 1; j < pts.length; j++) {
+            const b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+            if (d2 < ld2) { ctx.strokeStyle = rgba(BRAND, (1 - d2 / ld2) * 0.2); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+          }
+        }
+        // 節點
+        for (const p of pts) {
+          if (p.big) {
+            const pulse = 0.5 + 0.5 * Math.sin(t * 1.2 + p.ph);
+            ctx.fillStyle = rgba(p.c, 0.07 + pulse * 0.06); ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4.2, 0, 6.283); ctx.fill();
+          }
+          ctx.fillStyle = rgba(p.c, p.big ? 0.55 : 0.4); ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+        }
+      }
+
+      function frame(now) {
+        raf = requestAnimationFrame(frame);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        update(dt); draw(now / 1000);
+      }
+      function start() {
+        if (raf || reduceMQ.matches || document.hidden) return;
+        if (!built) build();
+        last = performance.now(); raf = requestAnimationFrame(frame);
+      }
+      function stop() { cancelAnimationFrame(raf); raf = 0; }
+
+      // 分頁切到背景時暫停
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+      let rt;
+      addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (built) { build(); } }, 150); });
+      reduceMQ.addEventListener('change', e => e.matches ? stop() : start());
+      start();
+    })();
+  })();
+  </script>
+</body>
+</html>

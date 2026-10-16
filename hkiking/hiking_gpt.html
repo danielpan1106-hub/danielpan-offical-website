@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="山野慢行登山健行行程：探索台灣山林、欣賞雲海與步道風景，查看行程特色、裝備建議並線上預約。">
+<title>山野慢行｜走進山裡，找回自己的節奏</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#173f35;--moss:#52745b;--sage:#dce8d9;--cream:#f7f5ee;--ink:#1f2d28;--muted:#65736c;--orange:#d88a51;--white:#fff;--shadow:0 16px 40px rgba(24,54,43,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;font-family:"Noto Sans TC",sans-serif;color:var(--ink);background:var(--cream);line-height:1.7}a{color:inherit;text-decoration:none}img{display:block;width:100%;object-fit:cover}button,input,select,textarea{font:inherit}.container{width:min(1140px,calc(100% - 40px));margin:auto}.nav-wrap{position:sticky;top:0;z-index:20;background:rgba(247,245,238,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(23,63,53,.1)}nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;color:var(--forest);font-size:1.15rem}.brand-mark{width:38px;height:38px;display:grid;place-items:center;background:var(--forest);color:white;border-radius:13px;font-size:1.25rem}.nav-links{display:flex;align-items:center;gap:28px;font-size:.93rem;color:#40564b}.nav-links a:hover{color:var(--orange)}.nav-cta,.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--forest);color:white;font-weight:700;border:1px solid var(--forest);transition:.2s;cursor:pointer}.nav-cta:hover,.btn:hover{background:#285b4b;transform:translateY(-2px)}.menu-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--forest);cursor:pointer}
+.hero{position:relative;min-height:650px;display:flex;align-items:center;overflow:hidden;background:#213e34;color:white}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,35,29,.82) 0%,rgba(13,35,29,.47) 48%,rgba(13,35,29,.08) 100%),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85') center/cover}.hero-content{position:relative;z-index:1;padding:90px 0 110px;max-width:700px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#e9c69f;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700}.eyebrow:before{content:"";width:28px;height:1px;background:currentColor}.hero h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.18;letter-spacing:.02em;margin:22px 0}.hero h1 span{color:#d6e5cc}.hero p{font-size:1.08rem;color:rgba(255,255,255,.86);max-width:530px;margin:0 0 30px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn.light{background:white;color:var(--forest);border-color:white}.btn.outline{background:transparent;border-color:rgba(255,255,255,.6)}.hero-note{display:flex;gap:20px;flex-wrap:wrap;margin-top:38px;color:rgba(255,255,255,.88);font-size:.88rem}.hero-note span{display:flex;align-items:center;gap:7px}.hero-note b{color:#fff}
+.section{padding:92px 0}.section-head{max-width:670px;margin-bottom:38px}.kicker{color:var(--moss);font-size:.8rem;font-weight:800;letter-spacing:.14em}.section h2{font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.3;margin:10px 0 14px;color:var(--forest)}.section-head p{color:var(--muted);margin:0}.trip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.trip-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 5px 25px rgba(24,54,43,.06);transition:.25s}.trip-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.trip-img{height:230px;position:relative}.tag{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.94);padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--forest)}.trip-body{padding:23px}.trip-body h3{margin:0 0 8px;font-size:1.25rem;color:var(--forest)}.trip-body p{font-size:.92rem;color:var(--muted);margin:0 0 18px}.trip-meta{display:flex;justify-content:space-between;gap:10px;padding-top:15px;border-top:1px solid #e8ece6;font-size:.84rem;color:#53675b}.trip-meta strong{color:var(--forest)}.trip-footer{display:flex;justify-content:space-between;align-items:center;margin-top:17px}.price{font-size:1.25rem;font-weight:800;color:var(--forest)}.price small{font-size:.78rem;font-weight:500;color:var(--muted)}
+.features{background:#e8eee4}.feature-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.feature-photo{position:relative}.feature-photo img{height:530px;border-radius:24px}.photo-caption{position:absolute;bottom:22px;left:22px;background:rgba(255,255,255,.92);padding:15px 18px;border-radius:14px;font-size:.9rem}.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}.feature-item{padding:18px 0;border-top:1px solid #cbd9ca}.feature-icon{width:43px;height:43px;border-radius:14px;background:white;display:grid;place-items:center;font-size:1.25rem;margin-bottom:12px}.feature-item h3{margin:0 0 6px;font-size:1rem;color:var(--forest)}.feature-item p{margin:0;font-size:.88rem;color:var(--muted)}
+.gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.gear-card{background:white;border-radius:18px;padding:24px;display:flex;gap:18px;align-items:flex-start}.gear-icon{width:52px;height:52px;flex:0 0 52px;border-radius:16px;background:var(--sage);display:grid;place-items:center;font-size:1.5rem}.gear-card h3{margin:0 0 7px;color:var(--forest)}.gear-card p{margin:0;color:var(--muted);font-size:.9rem}.gear-tip{margin-top:24px;padding:18px 22px;border-left:4px solid var(--orange);background:#f1e8dc;border-radius:0 12px 12px 0;color:#624b36;font-size:.9rem}
+.booking{background:var(--forest);color:white}.booking .kicker{color:#c7d9bd}.booking h2{color:white}.booking .section-head p{color:rgba(255,255,255,.7)}.booking-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}.booking-info{padding-top:12px}.booking-info p{color:rgba(255,255,255,.75)}.booking-benefits{list-style:none;padding:0;margin:28px 0}.booking-benefits li{margin:13px 0;display:flex;gap:10px;color:rgba(255,255,255,.88)}.booking-benefits li span{color:#c7d9bd}.contact-mini{padding-top:22px;border-top:1px solid rgba(255,255,255,.2);font-size:.9rem;color:rgba(255,255,255,.7)}.form-card{background:white;color:var(--ink);border-radius:22px;padding:30px;box-shadow:var(--shadow)}.form-card h3{margin:0 0 5px;color:var(--forest);font-size:1.35rem}.form-card>p{margin:0 0 22px;color:var(--muted);font-size:.9rem}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.86rem;font-weight:700;color:#40564b}.field input,.field select,.field textarea{width:100%;border:1px solid #d8e0d8;border-radius:10px;padding:12px 13px;background:#fbfcfa;outline:none;color:var(--ink)}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(82,116,91,.12)}.field textarea{resize:vertical;min-height:90px}.checkline{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:17px 0}.checkline input{margin-top:6px;accent-color:var(--forest)}.form-submit{width:100%;border:0}.form-message{display:none;margin-top:15px;padding:12px;border-radius:10px;background:#e7f3e6;color:#24523b;font-size:.9rem}.form-message.show{display:block}.form-note{font-size:.75rem;color:#7b8980;margin-top:12px}
+.quote{padding:65px 0;text-align:center;background:#e8eee4}.quote blockquote{max-width:800px;margin:0 auto;font-size:clamp(1.35rem,3vw,2rem);font-weight:600;line-height:1.55;color:var(--forest)}.quote p{margin:15px 0 0;color:var(--muted);font-size:.9rem}
+footer{background:#102f28;color:rgba(255,255,255,.7);padding:32px 0;font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.footer-brand{color:white;font-weight:800}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links a:hover{color:white}
+@media(max-width:850px){.nav-links{gap:16px}.nav-cta{display:none}.hero{min-height:590px}.trip-grid{grid-template-columns:1fr 1fr}.trip-card:last-child{grid-column:1/-1;display:grid;grid-template-columns:.9fr 1.1fr}.trip-card:last-child .trip-img{height:100%;min-height:260px}.feature-layout{gap:32px}.feature-photo img{height:470px}.booking-layout{grid-template-columns:1fr;gap:28px}.booking-info{max-width:650px}}
+@media(max-width:620px){.container{width:min(100% - 30px,1140px)}nav{height:66px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;left:15px;right:15px;top:65px;padding:18px;background:white;border-radius:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:10px 8px}.hero{min-height:620px}.hero:before{background:linear-gradient(90deg,rgba(13,35,29,.82),rgba(13,35,29,.38)),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80') center/cover}.hero-content{padding:72px 0 80px}.hero p{font-size:1rem}.hero-note{gap:12px;flex-direction:column}.section{padding:65px 0}.trip-grid{grid-template-columns:1fr}.trip-card:last-child{grid-column:auto;display:block}.trip-card:last-child .trip-img{height:230px;min-height:0}.feature-layout{grid-template-columns:1fr}.feature-photo img{height:350px}.feature-list{gap:12px}.feature-item{padding:15px 0}.gear-grid{grid-template-columns:1fr}.gear-card{padding:19px}.form-card{padding:22px 17px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-inner{align-items:flex-start;flex-direction:column}.section-head{margin-bottom:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav-wrap">
+  <nav class="container" aria-label="主要導覽">
+    <a class="brand" href="#home"><span class="brand-mark">▲</span>山野慢行</a>
+    <button class="menu-toggle" aria-label="開啟導覽選單" aria-expanded="false" id="menuToggle">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#trips">精選行程</a><a href="#features">活動特色</a><a href="#gear">裝備建議</a><a href="#booking">立即報名</a>
+    </div>
+    <a class="nav-cta" href="#booking">預約你的山旅 ↗</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container"><div class="hero-content">
+    <div class="eyebrow">Find your own pace</div>
+    <h1>走進山裡，<br><span>找回自己的節奏。</span></h1>
+    <p>把日常留在山下，跟著我們走進台灣的山林。從入門步道到雲端稜線，讓每一步都成為值得收藏的風景。</p>
+    <div class="hero-actions"><a class="btn light" href="#trips">探索精選行程 <span>↘</span></a><a class="btn outline" href="#features">認識山野慢行</a></div>
+    <div class="hero-note"><span>✦ <b>小團制</b> 深度體驗</span><span>✦ <b>專業領隊</b> 陪你出發</span><span>✦ <b>友善新手</b> 路線規劃</span></div>
+  </div></div>
+</section>
+<section class="section" id="trips">
+  <div class="container">
+    <div class="section-head"><div class="kicker">OUR JOURNEYS</div><h2>挑一條路，走進山的故事</h2><p>依照體能與時間挑選適合自己的路線。以下為示範行程，實際日期、費用與路況請以出團公告為準。</p></div>
+    <div class="trip-grid">
+      <article class="trip-card">
+        <div class="trip-img"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80" alt="森林步道與自然山景" loading="lazy"><span class="tag">新手友善</span></div>
+        <div class="trip-body"><h3>森林療癒・步道慢旅</h3><p>穿過綠意盎然的林間小徑，用舒服的步調感受森林、溪流與季節氣息。</p><div class="trip-meta"><span>◷ 約 3–4 小時</span><span>難度 <strong>★☆☆</strong></span></div><div class="trip-footer"><div class="price">NT$ 1,280 <small>/人起</small></div><a href="#booking" class="btn">我要參加 ↗</a></div></div>
+      </article>
+      <article class="trip-card">
+        <div class="trip-img"><img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80" alt="層層山巒與雲霧景色" loading="lazy"><span class="tag">人氣推薦</span></div>
+        <div class="trip-body"><h3>雲海之上・山巒展望</h3><p>沿著山徑緩步爬升，等待雲霧散開，將層層山巒與遼闊視野收進眼底。</p><div class="trip-meta"><span>◷ 約 5–6 小時</span><span>難度 <strong>★★☆</strong></span></div><div class="trip-footer"><div class="price">NT$ 1,680 <small>/人起</small></div><a href="#booking" class="btn">我要參加 ↗</a></div></div>
+      </article>
+      <article class="trip-card">
+        <div class="trip-img"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="壯闊的高山稜線" loading="lazy"><span class="tag">進階挑戰</span></div>
+        <div class="trip-body"><h3>稜線探險・高山視野</h3><p>挑戰更長的山徑與起伏地形，在一步一腳印之間，感受山岳的壯闊與自己的韌性。</p><div class="trip-meta"><span>◷ 約 7–8 小時</span><span>難度 <strong>★★★</strong></span></div><div class="trip-footer"><div class="price">NT$ 2,280 <small>/人起</small></div><a href="#booking" class="btn">我要參加 ↗</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section features" id="features">
+  <div class="container feature-layout">
+    <div class="feature-photo"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1100&q=85" alt="登山夥伴一起走在山徑上" loading="lazy"><div class="photo-caption">🌿 不趕路，也不錯過沿途風景。</div></div>
+    <div><div class="kicker">WHY HIKE WITH US</div><h2>不只是登山，<br>更是好好感受生活。</h2><p style="color:var(--muted)">我們相信，最好的旅程不是走得最快，而是用適合自己的速度，認識土地，也重新認識自己。</p>
+      <div class="feature-list">
+        <div class="feature-item"><div class="feature-icon">🧭</div><h3>路線分級規劃</h3><p>依體能與經驗挑選路線，出發前提供行程說明。</p></div>
+        <div class="feature-item"><div class="feature-icon">🤝</div><h3>小團深度體驗</h3><p>保留交流與觀察的空間，讓每位夥伴都被照顧。</p></div>
+        <div class="feature-item"><div class="feature-icon">🌱</div><h3>無痕山林理念</h3><p>垃圾自己帶下山，尊重生態，不留下人為痕跡。</p></div>
+        <div class="feature-item"><div class="feature-icon">⛑️</div><h3>安全優先原則</h3><p>行前提醒、風險評估與天候確認，必要時調整行程。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="gear">
+  <div class="container">
+    <div class="section-head"><div class="kicker">PACK SMART</div><h2>裝備帶得剛剛好，走得更安心</h2><p>依路線、季節與天候調整裝備。山區氣候變化快，出發前請再次確認領隊通知。</p></div>
+    <div class="gear-grid">
+      <div class="gear-card"><div class="gear-icon">🥾</div><div><h3>防滑健行鞋</h3><p>選擇合腳、抓地力良好的鞋款，出發前先穿著磨合，避免新鞋直接上山。</p></div></div>
+      <div class="gear-card"><div class="gear-icon">🎒</div><div><h3>背包與飲水</h3><p>準備適合行程的背包、足量飲水與行動糧，依個人需求補充電解質。</p></div></div>
+      <div class="gear-card"><div class="gear-icon">🧥</div><div><h3>洋蔥式穿搭</h3><p>排汗底層、保暖中層與防風防水外層，方便依溫度與活動量穿脫。</p></div></div>
+      <div class="gear-card"><div class="gear-icon">🧢</div><div><h3>防曬與雨具</h3><p>帽子、防曬用品、雨衣或雨褲不可少；山區天氣多變，別只看平地預報。</p></div></div>
+      <div class="gear-card"><div class="gear-icon">🩹</div><div><h3>個人安全用品</h3><p>個人藥品、簡易急救用品、頭燈、哨子與行動電源，按行程需求準備。</p></div></div>
+      <div class="gear-card"><div class="gear-icon">🪪</div><div><h3>證件與環境友善</h3><p>攜帶身分證件、少量現金與個人垃圾袋，遵守步道規範並保護自然環境。</p></div></div>
+    </div>
+    <div class="gear-tip">小提醒：高山、長程或有特殊地形的行程可能需要額外裝備。請以該次行程的裝備清單及領隊指示為準。</div>
+  </div>
+</section>
+<section class="section booking" id="booking">
+  <div class="container booking-layout">
+    <div class="booking-info"><div class="kicker">LET'S GO OUTSIDE</div><h2>下一段風景，<br>等你一起來。</h2><p>填寫報名意願，我們就能依你的需求協助確認適合的路線。提交後頁面會顯示示範確認訊息。</p>
+      <ul class="booking-benefits"><li><span>✓</span> 依經驗與體能建議合適行程</li><li><span>✓</span> 提供行前準備與裝備提醒</li><li><span>✓</span> 小團出發，享受山林節奏</li></ul>
+      <div class="contact-mini">📩 行程諮詢：hello@mountainwalk.example<br>※ 此為網站展示範本，聯絡資訊需替換為正式資料。</div>
+    </div>
+    <div class="form-card">
+      <h3>行程報名意願表</h3><p>留下聯絡方式，我們將依你選擇的行程安排後續聯繫。</p>
+      <form id="bookingForm">
+        <div class="form-grid">
+          <div class="field"><label for="name">姓名 *</label><input id="name" name="name" autocomplete="name" placeholder="請輸入姓名" required></div>
+          <div class="field"><label for="phone">聯絡電話 *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="09xx-xxx-xxx" required pattern="[0-9+() -]{8,20}"></div>
+          <div class="field"><label for="email">電子郵件 *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="trip">感興趣的行程 *</label><select id="trip" name="trip" required><option value="">請選擇行程</option><option>森林療癒・步道慢旅</option><option>雲海之上・山巒展望</option><option>稜線探險・高山視野</option><option>想請你推薦</option></select></div>
+          <div class="field"><label for="date">希望出發日期</label><input id="date" name="date" type="date"></div>
+          <div class="field"><label for="people">參加人數</label><select id="people" name="people"><option>1 人</option><option selected>2 人</option><option>3 人</option><option>4 人</option><option>5 人以上</option></select></div>
+          <div class="field full"><label for="experience">登山經驗</label><select id="experience" name="experience"><option>初次體驗／新手</option><option>偶爾健行</option><option>有固定登山經驗</option><option>有高山或長程經驗</option></select></div>
+          <div class="field full"><label for="message">其他需求（選填）</label><textarea id="message" name="message" placeholder="例如：飲食需求、同行者狀況或想詢問的問題"></textarea></div>
+        </div>
+        <label class="checkline"><input type="checkbox" required><span>我了解此表單為行程意願登記，實際報名成立與費用需由主辦單位另行確認。 *</span></label>
+        <button class="btn form-submit" type="submit">送出報名意願 ↗</button>
+        <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+        <div class="form-note">展示版提醒：此表單目前只在瀏覽器端驗證與顯示訊息，不會傳送或儲存個人資料。正式上線需串接後端或表單服務。</div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="quote"><div class="container"><blockquote>「山不會催你，風景也不會跑掉。<br>一步一步，走成自己的樣子。」</blockquote><p>山野慢行 · 把每一次出發，變成生活裡的小小練習</p></div></section>
+</main>
+<footer><div class="container footer-inner"><div><div class="footer-brand">▲ 山野慢行</div><div>走進山裡，找回自己的節奏。</div></div><div class="footer-links"><a href="#trips">精選行程</a><a href="#gear">裝備建議</a><a href="#booking">報名諮詢</a></div><div>© <span id="year"></span> 山野慢行 · 示範網站</div></div></footer>
+<script>
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const isOpen=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(isOpen));menuToggle.textContent=isOpen?'✕':'☰';});
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('bookingForm').addEventListener('submit',function(event){
+  event.preventDefault();
+  if(!this.reportValidity()) return;
+  const name=document.getElementById('name').value.trim();
+  const trip=document.getElementById('trip').value;
+  const msg=document.getElementById('formMessage');
+  msg.textContent=`謝謝 ${name}！已在此示範頁面完成「${trip}」的報名意願填寫。這是前端展示訊息，資料尚未傳送給主辦單位。`;
+  msg.classList.add('show');
+  msg.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>

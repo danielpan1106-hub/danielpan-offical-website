@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>潘佑明｜航太製造專家 × AI 智慧製造顧問</title>
+  <meta name="description" content="潘佑明，長榮航太科技製程工程師，14年精密加工與11年航太製造經驗。專精高階五軸製程開發、數據化成本工程與AI智慧製造落地諮詢。">
+  
+  <!-- Open Graph 標籤 -->
+  <meta property="og:title" content="潘佑明｜航太製造專家 × AI 智慧製造顧問">
+  <meta property="og:description" content="以航太等級的嚴謹，打造AI智慧製造。協助航太、半導體設備與精密加工產業將加工經驗轉化為可複製的數位競爭力。">
+  <meta property="og:type" content="website">
+  <!-- TODO: 請替換為您的正式網站網址與分享縮圖 -->
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://placehold.co/1200x630/2563eb/ffffff?text=Pan+You-Ming+Aerospace+AI">
+
+  <!-- Google Fonts: Noto Sans TC (繁中) + Inter & Space Grotesk (英數代碼感) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#2563eb',      /* 科技藍 */
+              purple: '#7c3aed',    /* 高級紫 */
+              mint: '#10b981',      /* 薄荷綠點綴 */
+              mintHover: '#059669',
+              slateDark: '#0f172a', /* 主標題深色 */
+              slateBody: '#334155', /* 內文深色 */
+              slateMuted: '#64748b' /* 次要輔助文字 */
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Space Grotesk"', '"Noto Sans TC"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(37, 99, 235, 0.07)',
+            'glass-hover': '0 16px 40px -10px rgba(37, 99, 235, 0.16)',
+            'mint-glow': '0 0 25px rgba(16, 185, 129, 0.45)',
+            'blue-glow': '0 0 30px rgba(37, 99, 235, 0.25)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 基礎背景與平滑滾動 */
+    body {
+      background-color: #f8fafc;
+      color: #334155;
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 科技背景 Canvas 定位 */
+    #tech-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 玻璃擬態樣式 */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(37, 99, 235, 0.35);
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12);
+    }
+
+    /* 頂級 CTA 按鈕規範：白底藍紫漸層外框，Hover 轉綠光與狀態字樣 */
+    .cta-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      background: #ffffff;
+      color: #1e40af;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      z-index: -1;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+      color: #065f46;
+    }
+    .cta-button:hover::before {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    /* CTA 內容切換效果 */
+    .cta-button .cta-hover-content {
+      display: none;
+    }
+    .cta-button:hover .cta-default-content {
+      display: none;
+    }
+    .cta-button:hover .cta-hover-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 導覽列小按鈕尺寸 */
+    .cta-button-nav {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    /* 漸層文字輔助 */
+    .text-gradient {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 支援減少動畫偏好 prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      #tech-canvas {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-blue/20 selection:text-brand-blue">
+
+  <!-- 白色科技背景：淡藍粒子、連線與流動節點 (由底層 Canvas 驅動) -->
+  <canvas id="tech-canvas" aria-hidden="true"></canvas>
+
+  <!-- 柔和漸層光暈裝飾層 (CSS 光暈球) -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-100/30 via-purple-50/20 to-transparent blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+
+  <!-- ==================== Header & Navigation ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center justify-between rounded-full px-5 py-3 transition-all duration-300 border border-slate-200/60 bg-white/70 backdrop-blur-md shadow-sm" aria-label="全站主導覽">
+        
+        <!-- Logo / 品牌名稱 -->
+        <a href="#hero" class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-lg" aria-label="返回首頁">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center text-white font-bold font-display text-sm shadow-md shadow-brand-blue/20">
+            YM
+          </span>
+          <div class="flex flex-col">
+            <span class="font-bold text-slate-900 tracking-tight text-base leading-none group-hover:text-brand-blue transition-colors">潘佑明</span>
+            <span class="text-[10px] text-brand-slateMuted tracking-wider font-mono mt-0.5">AEROSPACE × AI</span>
+          </div>
+        </a>
+
+        <!-- 桌機版選單項目 -->
+        <div class="hidden md:flex items-center gap-1 lg:gap-2">
+          <a href="#hero" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">首頁</a>
+          <a href="#about" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">關於我</a>
+          <a href="#solutions" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">AI 解決方案</a>
+          <a href="#cases" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">案例展示</a>
+          <a href="#blog" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">技術部落格</a>
+          <a href="#contact" class="nav-link px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-brand-blue rounded-full transition-colors">聯絡我</a>
+        </div>
+
+        <!-- 右側 CTA 按鈕 (桌機版固定預約) -->
+        <div class="hidden md:flex items-center">
+          <a href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-nav" aria-label="新分頁開啟 Google 行事曆預約諮詢">
+            <span class="cta-default-content flex items-center gap-1.5">
+              <span>預約諮詢</span>
+              <svg class="w-3.5 h-3.5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+            <span class="cta-hover-content">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="text-xs font-mono">Status: Ready to Connect</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 手機版漢堡選單按鈕 -->
+        <div class="flex md:hidden">
+          <button id="mobile-menu-btn" type="button" class="p-2 text-slate-700 hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-lg" aria-expanded="false" aria-controls="mobile-menu" aria-label="切換行動版導覽選單">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 手機版下拉抽屜選單 -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4" aria-label="行動版選單面板">
+      <div class="glass-card rounded-2xl p-5 mt-2 flex flex-col gap-3 shadow-xl">
+        <a href="#hero" class="mobile-nav-link py-2 text-base font-medium text-slate-800 border-b border-slate-100">首頁</a>
+        <a href="#about" class="mobile-nav-link py-2 text-base font-medium text-slate-800 border-b border-slate-100">關於我</a>
+        <a href="#solutions" class="mobile-nav-link py-2 text-base font-medium text-slate-800 border-b border-slate-100">AI 解決方案</a>
+        <a href="#cases" class="mobile-nav-link py-2 text-base font-medium text-slate-800 border-b border-slate-100">案例展示</a>
+        <a href="#blog" class="mobile-nav-link py-2 text-base font-medium text-slate-800 border-b border-slate-100">技術部落格</a>
+        <a href="#contact" class="mobile-nav-link py-2 text-base font-medium text-slate-800">聯絡我</a>
+        
+        <div class="pt-2">
+          <a href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" class="cta-button w-full text-center justify-center text-sm" aria-label="新分頁開啟 Google 行事曆預約諮詢">
+            <span class="cta-default-content flex items-center justify-center gap-2">
+              <span>預約諮詢</span>
+              <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+            <span class="cta-hover-content">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="text-xs font-mono">Status: Ready to Connect</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 1. 首頁 Hero ==================== -->
+  <main>
+    <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div class="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
+        
+        <!-- 頂部定位徽章 -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-brand-blue text-xs sm:text-sm font-medium mb-6 shadow-sm backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+          <span>航太製造專家 × AI 智慧製造顧問</span>
+        </div>
+
+        <!-- 主標題 (打字機動效容器) -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-slateDark tracking-tight leading-[1.2] min-h-[4rem] sm:min-h-[5rem] md:min-h-[6.5rem] flex items-center justify-center flex-wrap">
+          <span id="typewriter-text" class="inline"></span>
+          <span id="typewriter-cursor" class="inline-block w-1 md:w-1.5 h-8 md:h-12 ml-1 bg-brand-blue align-middle animate-pulse" aria-hidden="true"></span>
+        </h1>
+
+        <!-- 副標題 -->
+        <p class="mt-6 text-base sm:text-lg md:text-xl text-brand-slateBody font-normal max-w-3xl leading-relaxed">
+          14 年精密加工經驗｜11 年航太製程開發｜OPEN MIND hyperMILL 台灣區 TOP USER
+        </p>
+
+        <!-- 主次按鈕組 -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <!-- 主按鈕：預約諮詢 -->
+          <a href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" class="cta-button w-full sm:w-auto text-base shadow-lg hover:shadow-mint-glow" aria-label="新分頁開啟 Google 行事曆預約諮詢">
+            <span class="cta-default-content flex items-center justify-center gap-2">
+              <span>預約諮詢</span>
+              <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+            <span class="cta-hover-content">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span class="font-mono text-sm">Status: Ready to Connect</span>
+            </span>
+          </a>
+
+          <!-- 次按鈕：查看案例 -->
+          <a href="#cases" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-slate-700 bg-white/80 hover:bg-white border border-slate-300 hover:border-brand-blue hover:text-brand-blue shadow-sm hover:shadow-md transition-all duration-300 backdrop-blur-sm" aria-label="平滑捲動至案例展示區塊">
+            查看案例
+            <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- 往下捲動提示動畫 -->
+        <div class="mt-16 sm:mt-20 flex flex-col items-center gap-2 opacity-75 hover:opacity-100 transition-opacity">
+          <span class="text-xs font-mono text-brand-slateMuted tracking-wider uppercase">Scroll to explore</span>
+          <a href="#metrics" class="p-2 rounded-full border border-slate-200/80 bg-white/60 hover:bg-white text-slate-400 hover:text-brand-blue shadow-sm animate-bounce" aria-label="向下捲動探索數據亮點">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. 數據亮點列 ==================== -->
+    <section id="metrics" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 border-y border-slate-200/80 bg-white/60 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 divide-slate-100">
+          
+          <!-- 項目 1 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="counter-num text-gradient" data-target="14">0</span>
+              <span class="text-lg sm:text-xl font-bold ml-1 text-brand-blue">年</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">精密加工經驗</p>
+          </div>
+
+          <!-- 項目 2 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="counter-num text-gradient" data-target="9">0</span>
+              <span class="text-lg sm:text-xl font-bold ml-1 text-brand-blue">年</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">航太製造領域</p>
+          </div>
+
+          <!-- 項目 3 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="counter-num text-gradient" data-target="40">0</span>
+              <span class="text-lg sm:text-xl font-bold mx-0.5 text-brand-purple">–</span>
+              <span class="counter-num text-gradient" data-target="80">0</span>
+              <span class="text-lg sm:text-xl font-bold ml-0.5 text-brand-purple">%</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">工時與成本降幅</p>
+          </div>
+
+          <!-- 項目 4 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="counter-num text-gradient" data-target="32">0</span>
+              <span class="text-base sm:text-lg font-bold text-slate-500">h</span>
+              <span class="text-sm font-bold text-slate-400 mx-1">→</span>
+              <span class="counter-num text-gradient" data-target="6">0</span>
+              <span class="text-base sm:text-lg font-bold text-brand-mint">h</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">單一零件加工時間</p>
+          </div>
+
+          <!-- 項目 5 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="text-xs sm:text-sm font-normal text-slate-500 mr-1">約 NT$</span>
+              <span class="counter-num text-gradient" data-target="500">0</span>
+              <span class="text-base sm:text-lg font-bold ml-1 text-brand-blue">萬</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">累計節省成本</p>
+          </div>
+
+          <!-- 項目 6 -->
+          <div class="metric-card pt-4 sm:pt-0">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-slateDark font-display flex items-baseline justify-center">
+              <span class="counter-num text-gradient" data-target="4">0</span>
+              <span class="text-lg sm:text-xl font-bold mx-0.5 text-brand-blue">–</span>
+              <span class="counter-num text-gradient" data-target="6">0</span>
+              <span class="text-lg sm:text-xl font-bold ml-1 text-brand-blue">倍</span>
+            </div>
+            <p class="mt-1.5 text-xs sm:text-sm font-medium text-brand-slateBody">高效率加工 vs. 傳統工法</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. 關於我 ==================== -->
+    <section id="about" class="relative py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- 頂部自介引言與個人形象區 -->
+        <div class="glass-card rounded-3xl p-8 sm:p-12 mb-16 shadow-glass relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- 個人照片展示位置（圓角＋淡藍光暈外框） -->
+            <div class="lg:col-span-4 flex justify-center">
+              <div class="relative group">
+                <!-- 光暈背景 -->
+                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-500 to-indigo-500 opacity-30 group-hover:opacity-50 blur-xl transition-all duration-500" aria-hidden="true"></div>
+                
+                <div class="relative w-56 h-64 sm:w-64 sm:h-72 rounded-2xl overflow-hidden border-2 border-blue-200/80 bg-white/90 shadow-lg flex flex-col items-center justify-center p-4 text-center">
+                  <!-- TODO: 請替換為潘佑明個人的專業照片 (例如 src="avatar.jpg") -->
+                  <div class="w-24 h-24 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center mb-3 text-brand-blue">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-bold text-slate-800">潘佑明 Y.M. PAN</span>
+                  <span class="text-xs text-brand-slateMuted mt-1">長榮航太科技 製程工程師</span>
+                  <span class="mt-3 px-2 py-0.5 rounded text-[10px] font-mono bg-blue-100/70 text-blue-700 border border-blue-200/60">
+                    <!-- TODO: 請替換個人形象照 -->
+                    Photo Placeholder
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 自介核心文案 -->
+            <div class="lg:col-span-8 flex flex-col justify-center">
+              <div class="inline-flex items-center gap-1.5 text-brand-blue font-semibold text-xs tracking-wider uppercase mb-2">
+                <span>About Me</span>
+                <span class="w-8 h-[1px] bg-brand-blue/50"></span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-slateDark tracking-tight mb-5">
+                深耕精密現場，引領航太製程邁向數位資產化
+              </h2>
+              <p class="text-base sm:text-lg text-brand-slateBody leading-relaxed font-normal">
+                我是潘佑明，長榮航太科技製程工程師，有 14 年精密加工經驗，其中 11 年在航太製造領域。我的工作重點是把複雜零件轉成穩定、可量產、成本有競爭力的製程，也在推動加工經驗走向數據化與 AI 智慧製造。
+              </p>
+              
+              <!-- 核心身份標籤 -->
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">長榮航太科技 製程工程師</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">14年 精密加工實務</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">11年 航太關鍵製程</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">hyperMILL TOP USER</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 6 張玻璃擬態卡片（桌機 3×2、平板 2×3、手機 1 欄） -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- 卡片 1 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-brand-blue flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🔧
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">高階五軸製程開發</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                我主導過 GE、Boeing 與 ASML 關鍵零組件的製程開發，涵蓋發動機擴散器、軸承座，以及半導體設備結構件。我擅長把複雜幾何拆解成有系統的量產流程，縮短開發週期。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-100 text-[11px] font-mono text-brand-slateMuted">
+              Focus: GE / Boeing / ASML 零組件量產
+            </div>
+          </div>
+
+          <!-- 卡片 2 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                💰
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">數據驅動的成本工程</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                我透過刀具壽命管理、路徑優化與製程重組，在多項專案中降低 40–80% 的工時與成本。其中一個零件的加工時間從 32 小時降到 6 小時，累計節省約 NT$500 萬。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-100 text-[11px] font-mono text-brand-slateMuted">
+              Metric: 32h → 6h / 累計節省 NT$500 萬
+            </div>
+          </div>
+
+          <!-- 卡片 3 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 text-brand-purple flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🌐
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">跨國技術創新</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                我獲選 OPEN MIND hyperMILL 台灣區 TOP USER，並與德國及新加坡原廠技術團隊合作，率先把 MAXX Machining 高效率擺線加工與桶型刀加工導入航太量產，效率達傳統工法的 4–6 倍。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-100 text-[11px] font-mono text-brand-slateMuted">
+              Partnership: 德國 & 新加坡原廠合作
+            </div>
+          </div>
+
+          <!-- 卡片 4 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🤝
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">供應鏈技術賦能</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                我曾進駐多家協力廠商，負責製程轉移與量產問題排除，協助他們建立航太及半導體等級的標準化製程，提升整體供應鏈產能。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-100 text-[11px] font-mono text-brand-slateMuted">
+              Field: 製程轉移與協力廠標準化建立
+            </div>
+          </div>
+
+          <!-- 卡片 5 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🏆
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">肯定與榮譽</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                曾獲長榮航太 2021 卓越貢獻獎、品質績效優等獎與第二名，以及 OPEN MIND hyperMILL 台灣區 TOP USER。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-100 text-[11px] font-mono text-brand-slateMuted">
+              Awards: 長榮航太 2021 卓越貢獻獎等
+            </div>
+          </div>
+
+          <!-- 卡片 6 -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-blue/30 bg-blue-50/40">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-100 border border-blue-200 text-brand-blue flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🤖
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">下一步：AI 智慧製造</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                我想把老師傅的隱性經驗轉成可保存的數位資產，目前聚焦三個方向：自動化報價模型、刀具壽命預測、CNC 預測性維護。目標是讓航太製造更快、更準、更透明。
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-blue-100 text-[11px] font-mono text-brand-blue font-semibold">
+              Vision: 更快、更準、更透明的製造生態
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. AI 解決方案 ==================== -->
+    <section id="solutions" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-slate-50/60 to-transparent">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- 區塊標題與導言 -->
+        <div class="max-w-3xl mb-16">
+          <div class="inline-flex items-center gap-1.5 text-brand-purple font-semibold text-xs tracking-wider uppercase mb-2">
+            <span>AI Solutions</span>
+            <span class="w-8 h-[1px] bg-brand-purple/50"></span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-slateDark tracking-tight">
+            AI 解決方案｜讓製造經驗成為可複製的智慧
+          </h2>
+          <p class="mt-6 text-base sm:text-lg text-brand-slateBody leading-relaxed font-normal">
+            航太與半導體製造的競爭力，長期建立在老師傅的經驗上。但經驗不容易傳承，報價常仰賴個人判斷，刀具與設備成本也難以預估，這些是許多工廠共同的痛點。我以 14 年精密加工、11 年航太製程開發的現場經驗為基礎，協助企業把經驗轉成可量化、可複製的數位能力。
+          </p>
+        </div>
+
+        <!-- 4 張服務卡片（桌機 2×2 / 4欄，手機 1 欄） -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16">
+          
+          <!-- 方案 1 -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-brand-blue flex items-center justify-center text-2xl mb-5 shadow-sm">
+                📐
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">自動化報價模型</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                結合 CAD 特徵與歷史工時數據建立成本估算模型，縮短報價時間，也減少技術端與業務端的認知落差。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-medium text-brand-blue">
+              <span>消除業務與技術端落差</span>
+            </div>
+          </div>
+
+          <!-- 方案 2 -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🔧
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">刀具壽命預測</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                分析主軸負載等加工數據，預測刀具壽命，在加工品質與換刀成本之間找到平衡點。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-medium text-emerald-600">
+              <span>品質保證與成本平衡</span>
+            </div>
+          </div>
+
+          <!-- 方案 3 -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 text-brand-purple flex items-center justify-center text-2xl mb-5 shadow-sm">
+                ⚙️
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">CNC 預測性維護</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                建立設備維護週期模型，把被動維修轉為主動預防，降低非預期停機對交期的衝擊。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-medium text-brand-purple">
+              <span>防範非預期停機衝擊</span>
+            </div>
+          </div>
+
+          <!-- 方案 4 -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                🧠
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark mb-3">隱性經驗數位化</h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed">
+                把製程 know-how 整理成標準化的數位資產，作為跨廠區製程標準化與人才培育的基礎。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-medium text-amber-600">
+              <span>製程標準化與知識傳承</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 收尾段落（引言樣式） -->
+        <div class="glass-card rounded-3xl p-8 sm:p-10 border-l-4 border-brand-blue bg-white/85 shadow-sm relative">
+          <div class="flex items-start gap-4">
+            <svg class="w-8 h-8 text-brand-blue/30 shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed italic">
+              我曾透過刀具壽命管理與路徑優化，達成 40–80% 的工時與成本降幅，也曾進駐多家協力廠商完成技術轉移。這些經驗讓我確信：AI 要落地，關鍵在於能否與現場製程、人員及供應鏈接軌。我的角色，就是讓AI 成為現場真正用得上的工具。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. 案例展示 ==================== -->
+    <section id="cases" class="relative py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- 區塊標題 -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-1.5 text-brand-blue font-semibold text-xs tracking-wider uppercase mb-2">
+            <span>Case Studies</span>
+            <span class="w-8 h-[1px] bg-brand-blue/50"></span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-slateDark tracking-tight">
+            實務驗證：航太量產與供應鏈優化成果
+          </h2>
+          <p class="mt-4 text-brand-slateBody text-sm sm:text-base">
+            以現場數據為依據的真實案例，展現精密加工極限與標準化落地的實質效益
+          </p>
+        </div>
+
+        <!-- 3 張案例卡片 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- 案例 A -->
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-t-4 border-t-brand-blue">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-brand-blue">
+                  案例 A｜製程優化
+                </span>
+                <span class="text-xs font-mono text-slate-400">#CycleTime</span>
+              </div>
+              <h3 class="text-xl font-bold text-brand-slateDark mb-4">
+                單一零件切削工時壓縮與製程重組
+              </h3>
+              
+              <!-- 挑戰 -->
+              <div class="mb-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【挑戰】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  單一零件加工時間長達 32 小時，面臨高工時與成本瓶頸。
+                  <!-- TODO: 請依專案補充更詳細之零件材料幾何挑戰細節 -->
+                </p>
+              </div>
+
+              <!-- 做法 -->
+              <div class="mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【做法】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  透過刀具壽命管理、切削路徑優化與製程重組改善加工效率。
+                  <!-- TODO: 請補充刀具型號與切削參數優化細節 -->
+                </p>
+              </div>
+            </div>
+
+            <!-- 成果 -->
+            <div class="pt-6 border-t border-slate-100 bg-blue-50/50 -mx-8 -mb-8 p-8 rounded-b-3xl">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">【成果】</span>
+              <div class="space-y-2">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-extrabold text-brand-blue font-display">32h → 6h</span>
+                  <span class="text-xs font-bold text-slate-600">單一零件工時</span>
+                </div>
+                <div class="text-sm font-bold text-slate-700">
+                  累計節省約 <span class="text-xl font-extrabold text-brand-purple font-display">NT$500 萬</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 案例 B -->
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-t-4 border-t-brand-purple">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-brand-purple">
+                  案例 B｜高效率加工導入
+                </span>
+                <span class="text-xs font-mono text-slate-400">#HighEfficiency</span>
+              </div>
+              <h3 class="text-xl font-bold text-brand-slateDark mb-4">
+                MAXX Machining 擺線與桶型刀導入
+              </h3>
+              
+              <!-- 挑戰 -->
+              <div class="mb-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【挑戰】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  航太關鍵零件幾何複雜，採用傳統切削工法加工速度受限。
+                  <!-- TODO: 請補充原有機台條件與加工限制細節 -->
+                </p>
+              </div>
+
+              <!-- 做法 -->
+              <div class="mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【做法】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  與德國及新加坡原廠技術團隊合作，率先把 MAXX Machining 高效率擺線加工與桶型刀加工導入航太量產。
+                  <!-- TODO: 請補充測試驗證流程與編程策略細節 -->
+                </p>
+              </div>
+            </div>
+
+            <!-- 成果 -->
+            <div class="pt-6 border-t border-slate-100 bg-purple-50/50 -mx-8 -mb-8 p-8 rounded-b-3xl">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">【成果】</span>
+              <div class="space-y-2">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-extrabold text-brand-purple font-display">4–6 倍</span>
+                  <span class="text-xs font-bold text-slate-600">效率提升</span>
+                </div>
+                <div class="text-xs font-medium text-slate-600">
+                  相較於傳統工法達成跳躍式產能突破
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 案例 C -->
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-t-4 border-t-brand-mint">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700">
+                  案例 C｜供應鏈技術轉移
+                </span>
+                <span class="text-xs font-mono text-slate-400">#SupplyChain</span>
+              </div>
+              <h3 class="text-xl font-bold text-brand-slateDark mb-4">
+                協力廠商航太與半導體等級標準化
+              </h3>
+              
+              <!-- 挑戰 -->
+              <div class="mb-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【挑戰】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  協力廠商於航太與半導體結構件量產過程中面臨技術轉移與異常排除門檻。
+                  <!-- TODO: 請補充協力廠原先生產良率與問題樣態細節 -->
+                </p>
+              </div>
+
+              <!-- 做法 -->
+              <div class="mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">【做法】</h4>
+                <p class="text-sm text-brand-slateBody leading-relaxed">
+                  進駐多家協力廠商，親自負責製程轉移與量產問題排除，建立標準化切削流程。
+                  <!-- TODO: 請補充品管規範與SOP轉移具體項目 -->
+                </p>
+              </div>
+            </div>
+
+            <!-- 成果 -->
+            <div class="pt-6 border-t border-slate-100 bg-emerald-50/50 -mx-8 -mb-8 p-8 rounded-b-3xl">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">【成果】</span>
+              <div class="space-y-2">
+                <div class="text-2xl font-extrabold text-emerald-700 font-display">
+                  標準化製程落地
+                </div>
+                <div class="text-xs font-medium text-slate-600">
+                  協助協力體系成功建立航太與半導體等級標準
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. 技術部落格 ==================== -->
+    <section id="blog" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- 區塊標題 -->
+        <div class="max-w-3xl mb-16">
+          <div class="inline-flex items-center gap-1.5 text-brand-blue font-semibold text-xs tracking-wider uppercase mb-2">
+            <span>Technical Insights</span>
+            <span class="w-8 h-[1px] bg-brand-blue/50"></span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-slateDark tracking-tight">
+            技術部落格｜現場加工與 AI 落地思維
+          </h2>
+          <p class="mt-4 text-brand-slateBody text-sm sm:text-base">
+            記錄航太精密製造邁向數據化、演算法與現場工法整合的深度洞察
+          </p>
+        </div>
+
+        <!-- 3 張文章卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- 文章 1 -->
+          <!-- TODO: 請替換文章連結與內容 -->
+          <article class="glass-card rounded-2xl p-7 flex flex-col justify-between relative group">
+            <div>
+              <div class="flex items-center justify-between text-xs text-brand-slateMuted mb-4">
+                <span class="font-mono">2026 Q2</span>
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                  即將發布
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark group-hover:text-brand-blue transition-colors mb-3 leading-snug">
+                五軸加工的隱性經驗，如何變成資料？
+              </h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed line-clamp-3">
+                探討如何將現場資深工程師的切削經驗、震動感知與進給調控，轉譯為結構化特徵數據，建立可傳承的製造知識庫。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-mono">閱讀時間約 6 分鐘</span>
+              <span class="text-brand-blue font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                Coming Soon →
+              </span>
+            </div>
+          </article>
+
+          <!-- 文章 2 -->
+          <!-- TODO: 請替換文章連結與內容 -->
+          <article class="glass-card rounded-2xl p-7 flex flex-col justify-between relative group">
+            <div>
+              <div class="flex items-center justify-between text-xs text-brand-slateMuted mb-4">
+                <span class="font-mono">2026 Q2</span>
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                  即將發布
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark group-hover:text-brand-blue transition-colors mb-3 leading-snug">
+                刀具壽命預測：從主軸負載開始
+              </h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed line-clamp-3">
+                解析主軸馬達負載電流波形與切削磨損之關聯，如何不額外加裝昂貴感測器，即可在加工現場建立低成本、高精度的換刀預警。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-mono">閱讀時間約 8 分鐘</span>
+              <span class="text-brand-blue font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                Coming Soon →
+              </span>
+            </div>
+          </article>
+
+          <!-- 文章 3 -->
+          <!-- TODO: 請替換文章連結與內容 -->
+          <article class="glass-card rounded-2xl p-7 flex flex-col justify-between relative group">
+            <div>
+              <div class="flex items-center justify-between text-xs text-brand-slateMuted mb-4">
+                <span class="font-mono">2026 Q3</span>
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                  即將發布
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-brand-slateDark group-hover:text-brand-blue transition-colors mb-3 leading-snug">
+                製造業導入 AI，為什麼常卡在現場？
+              </h3>
+              <p class="text-sm text-brand-slateBody leading-relaxed line-clamp-3">
+                剖析演算法模型與機台實際生產環境的鴻溝，從現場人員心理、夾治具公差到供應鏈協作，分析 AI 能真正帶來效益的實務關鍵。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-mono">閱讀時間約 10 分鐘</span>
+              <span class="text-brand-blue font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                Coming Soon →
+              </span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. 聯絡我 ==================== -->
+    <section id="contact" class="relative py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        
+        <div class="glass-card rounded-3xl p-8 sm:p-14 shadow-2xl relative overflow-hidden border border-blue-200/80">
+          <!-- 裝飾性柔和背景光暈 -->
+          <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-brand-blue text-xs font-semibold mb-6">
+            <span>GET IN TOUCH</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-slateDark tracking-tight mb-6">
+            讓我們一起把製造經驗變成競爭力
+          </h2>
+          
+          <p class="text-base sm:text-lg text-brand-slateBody max-w-2xl mx-auto leading-relaxed mb-10">
+            無論是航太/半導體高難度五軸切削製程開發、工時成本優化，或是評估導入數據驅動的 AI 報價與刀具預測，歡迎預約專屬諮詢時段進行深入探討。
+          </p>
+
+          <!-- 核心預約按鈕 -->
+          <div class="flex justify-center mb-12">
+            <a href="https://calendar.app.google/KTHxRi8hTyBg22FM9" target="_blank" rel="noopener noreferrer" class="cta-button text-lg px-10 py-4 shadow-xl hover:shadow-mint-glow" aria-label="新分頁開啟 Google 行事曆預約 30 分鐘諮詢">
+              <span class="cta-default-content flex items-center justify-center gap-2">
+                <span>預約 30 分鐘諮詢</span>
+                <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+              </span>
+              <span class="cta-hover-content">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span class="font-mono text-base">Status: Ready to Connect</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- 聯絡管道佔位 (免後端表單) -->
+          <div class="pt-8 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+            
+            <!-- Email 佔位 -->
+            <!-- TODO: 請替換為您的正式 Email -->
+            <div class="flex items-center justify-center sm:justify-start gap-3 p-3 rounded-xl bg-white/60 border border-slate-200/60">
+              <div class="w-9 h-9 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <span class="text-[11px] text-slate-400 block font-mono">Email Address</span>
+                <a href="mailto:contact@example.com" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">
+                  <!-- TODO: 請替換 Email -->
+                  contact@example.com
+                </a>
+              </div>
+            </div>
+
+            <!-- LinkedIn 佔位 -->
+            <!-- TODO: 請替換為您的 LinkedIn 個人連結 -->
+            <div class="flex items-center justify-center sm:justify-start gap-3 p-3 rounded-xl bg-white/60 border border-slate-200/60">
+              <div class="w-9 h-9 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <span class="text-[11px] text-slate-400 block font-mono">Professional Profile</span>
+                <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">
+                  <!-- TODO: 請替換 LinkedIn 檔案 -->
+                  LinkedIn Profile
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 8. Footer ==================== -->
+  <footer class="relative z-10 border-t border-slate-200/80 bg-white/80 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <p class="text-xs sm:text-sm text-brand-slateMuted text-center sm:text-left">
+        © 2026 潘佑明｜Aerospace × AI Smart Manufacturing. All rights reserved.
+      </p>
+
+      <!-- 回到頂部按鈕 -->
+      <button id="back-to-top" type="button" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-brand-blue transition-colors px-3 py-1.5 rounded-full border border-slate-200 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-blue" aria-label="平滑捲動回到頁面頂部">
+        <span>Back to Top</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+      </button>
+
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ==================== 1. 無障礙模式偵測 ==================== */
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ==================== 2. 打字機效果 (Hero Typewriter) ==================== */
+      const typewriterElement = document.getElementById('typewriter-text');
+      const typewriterCursor = document.getElementById('typewriter-cursor');
+      const headlineText = "以航太等級的嚴謹，打造AI智慧製造";
+
+      if (prefersReducedMotion) {
+        // 若使用者偏好減少動畫，立即呈現全文
+        typewriterElement.textContent = headlineText;
+        if (typewriterCursor) typewriterCursor.style.display = 'none';
+      } else {
+        let charIndex = 0;
+        const typingSpeed = 80; // 毫秒
+        function typeWriter() {
+          if (charIndex < headlineText.length) {
+            typewriterElement.textContent += headlineText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, typingSpeed);
+          } else {
+            // 打字完成後保留低頻閃爍或淡化游標
+            setTimeout(() => {
+              if (typewriterCursor) {
+                typewriterCursor.classList.replace('w-1', 'w-0.5');
+              }
+            }, 1000);
+          }
+        }
+        setTimeout(typeWriter, 300);
+      }
+
+      /* ==================== 3. 科技網格粒子畫布 (Single Canvas) ==================== */
+      const canvas = document.getElementById('tech-canvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animationFrameId = null;
+      let isVisible = true;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+      }
+
+      function initParticles() {
+        particles = [];
+        // 手機版自動減少粒子數以節省效能 (桌機 45，手機 20)
+        const count = window.innerWidth < 768 ? 20 : 45;
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.45,
+            radius: Math.random() * 1.8 + 1,
+            alpha: Math.random() * 0.25 + 0.1
+          });
+        }
+      }
+
+      function drawParticles() {
+        if (!isVisible || prefersReducedMotion) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 繪製粒子與微弱連線
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(37, 99, 235, ${p.alpha})`;
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // 連線距離門檻
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(37, 99, 235, ${0.12 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.75;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animationFrameId = requestAnimationFrame(drawParticles);
+      }
+
+      if (!prefersReducedMotion) {
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        drawParticles();
+
+        // 當分頁切到背景時暫停繪製
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            isVisible = false;
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+          } else {
+            isVisible = true;
+            drawParticles();
+          }
+        });
+      }
+
+      /* ==================== 4. 數據計數器滾動增加 (Metrics Counter) ==================== */
+      const counterElements = document.querySelectorAll('.counter-num');
+      let countersStarted = false;
+
+      function startCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+
+        counterElements.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          if (prefersReducedMotion) {
+            counter.textContent = target;
+            return;
+          }
+          const duration = 1600; // 計數動畫總長 (ms)
+          const startTime = performance.now();
+
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // easeOutQuad 緩動函數
+            const eased = 1 - (1 - progress) * (1 - progress);
+            const currentVal = Math.floor(eased * target);
+            counter.textContent = currentVal;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          }
+          requestAnimationFrame(updateCounter);
+        });
+      }
+
+      const metricsSection = document.getElementById('metrics');
+      if (metricsSection) {
+        const metricsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startCounters();
+              metricsObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
+        metricsObserver.observe(metricsSection);
+      }
+
+      /* ==================== 5. 導覽列 ScrollSpy 與背景切換 ==================== */
+      const header = document.getElementById('main-header');
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        // 捲動超過 30px 時導覽列更換為深一點的毛玻璃
+        if (window.scrollY > 30) {
+          header.classList.add('py-2');
+          header.classList.remove('py-4');
+        } else {
+          header.classList.add('py-4');
+          header.classList.remove('py-2');
+        }
+
+        // 當前區塊的高亮監聽 (ScrollSpy)
+        let currentSectionId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          const sectionHeight = section.offsetHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('text-brand-blue', 'bg-blue-50/80');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('text-brand-blue', 'bg-blue-50/80');
+          }
+        });
+      }, { passive: true });
+
+      /* ==================== 6. 手機版漢堡選單互動 ==================== */
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // 點擊選單項目後自動關閉抽屜
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ==================== 7. 回到頂部按鈕 ==================== */
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
+        });
+      }
+
+      /* ==================== 8. IntersectionObserver 卡片淡入動效 ==================== */
+      if (!prefersReducedMotion) {
+        const fadeCards = document.querySelectorAll('.glass-card, .metric-card');
+        const fadeObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('opacity-100', 'translate-y-0');
+              entry.target.classList.remove('opacity-0', 'translate-y-6');
+              fadeObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        fadeCards.forEach(card => {
+          card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-6');
+          fadeObserver.observe(card);
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>
